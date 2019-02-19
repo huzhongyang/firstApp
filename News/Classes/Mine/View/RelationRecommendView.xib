@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RelationRecommendView" customModule="News" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关推荐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZI3-c7-jcM">
+                    <rect key="frame" x="15" y="0.0" width="360" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="E13-vu-giZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="uef-of-Avh">
+                    <rect key="frame" x="0.0" y="32" width="375" height="201"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="l2Y-cL-ZBT">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ZI3-c7-jcM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="13o-1X-XbK"/>
+                <constraint firstItem="uef-of-Avh" firstAttribute="top" secondItem="ZI3-c7-jcM" secondAttribute="bottom" id="BnZ-2B-BzH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uef-of-Avh" secondAttribute="trailing" id="GcF-6n-zc9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uef-of-Avh" secondAttribute="bottom" id="RVM-5A-Q3o"/>
+                <constraint firstItem="uef-of-Avh" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Spp-3A-6r4"/>
+                <constraint firstItem="ZI3-c7-jcM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ZOW-v3-kH8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ZI3-c7-jcM" secondAttribute="trailing" id="lfh-k4-tfK"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="collectionView" destination="uef-of-Avh" id="2Md-Lw-Z2x"/>
+                <outlet property="labelHeight" destination="E13-vu-giZ" id="TEs-o1-Iuz"/>
+            </connections>
+            <point key="canvasLocation" x="82.400000000000006" y="190.25487256371815"/>
+        </view>
+    </objects>
+</document>
