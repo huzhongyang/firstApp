@@ -1,8 +1,8 @@
 //
-//  UIView+Extension.swift
+//  UIKit+Extension.swift
 //  News
 //
-//  Created by huzhongyang on 2019/1/16.
+//  Created by huzhongyang on 2019/2/22.
 //  Copyright © 2019 huzhongyang. All rights reserved.
 //
 
@@ -10,12 +10,14 @@ import UIKit
 
 protocol NibLoadable {}
 
+/// 从 xib 中加载 view
 extension NibLoadable {
     static func loadViewFromNib() -> Self {
         return Bundle.main.loadNibNamed("\(self)", owner: nil, options: nil)?.last as! Self
     }
 }
 
+// MARK: - UIView 扩展
 extension UIView {
     /// x
     var x: CGFloat {
@@ -99,5 +101,18 @@ extension UIView {
             tempCenter.y = newValue
             center = tempCenter
         }
+    }
+}
+
+// MARK: - UIColor 扩展
+extension UIColor {
+    
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) {
+        self.init(displayP3Red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
+    }
+    
+    /// 背景灰色 f8f9f7
+    class func globalBackgroundColor() -> UIColor {
+        return UIColor(r: 248, g: 249, b: 247)
     }
 }

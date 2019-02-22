@@ -24,6 +24,7 @@
 		440F150E221F9D740033FF0C /* DongtaiOriginThreadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440F150D221F9D740033FF0C /* DongtaiOriginThreadView.xib */; };
 		440F1510221FBC770033FF0C /* DongtaiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F150F221FBC770033FF0C /* DongtaiCollectionView.swift */; };
 		440F1512221FCE8F0033FF0C /* DongtaiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440F1511221FCE8F0033FF0C /* DongtaiCollectionView.xib */; };
+		440F1514221FDF240033FF0C /* UIKit+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F1513221FDF240033FF0C /* UIKit+Extension.swift */; };
 		442D68982209DA5600BE1558 /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D68972209DA5600BE1558 /* PopoverAnimator.swift */; };
 		442D689A2209DCCB00BE1558 /* MyPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D68992209DCCB00BE1558 /* MyPresentationController.swift */; };
 		444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */; };
@@ -32,7 +33,6 @@
 		4495D8F121A3FE1300F53F60 /* MyFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4495D8EF21A3FE1300F53F60 /* MyFirstSectionCell.xib */; };
 		4495D90621A4393800F53F60 /* MyConcernCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495D90421A4393800F53F60 /* MyConcernCell.swift */; };
 		4495D90721A4393800F53F60 /* MyConcernCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4495D90521A4393800F53F60 /* MyConcernCell.xib */; };
-		449DB45B21EEF81200BFBBD5 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449DB45A21EEF81200BFBBD5 /* UIView+Extension.swift */; };
 		44A4B8D2220FA99A002F9ECA /* NavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A4B8D1220FA99A002F9ECA /* NavigationBarView.xib */; };
 		44A4B8D422100419002F9ECA /* RelationRecommendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A4B8D322100419002F9ECA /* RelationRecommendView.swift */; };
 		44A4B8D62210043A002F9ECA /* RelationRecommendView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44A4B8D52210043A002F9ECA /* RelationRecommendView.xib */; };
@@ -54,7 +54,6 @@
 		44B47D6321A300BA0026E2F0 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D6021A300B90026E2F0 /* MyTabBarController.swift */; };
 		44B47D6721A300DC0026E2F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D6521A300DC0026E2F0 /* AppDelegate.swift */; };
 		44B47D6A21A30C510026E2F0 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D6921A30C510026E2F0 /* Const.swift */; };
-		44B47D6D21A30DEC0026E2F0 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D6C21A30DEC0026E2F0 /* UIColor+Extension.swift */; };
 		44B47D7021A3D7400026E2F0 /* NetWorkTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D6F21A3D7400026E2F0 /* NetWorkTools.swift */; };
 		44B47D7221A3E2480026E2F0 /* MyCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D7121A3E2480026E2F0 /* MyCellModel.swift */; };
 		44B47D7521A3F15C0026E2F0 /* MyOtherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B47D7321A3F15C0026E2F0 /* MyOtherCell.swift */; };
@@ -118,6 +117,7 @@
 		440F150D221F9D740033FF0C /* DongtaiOriginThreadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiOriginThreadView.xib; sourceTree = "<group>"; };
 		440F150F221FBC770033FF0C /* DongtaiCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongtaiCollectionView.swift; sourceTree = "<group>"; };
 		440F1511221FCE8F0033FF0C /* DongtaiCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiCollectionView.xib; sourceTree = "<group>"; };
+		440F1513221FDF240033FF0C /* UIKit+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit+Extension.swift"; sourceTree = "<group>"; };
 		442D68972209DA5600BE1558 /* PopoverAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
 		442D68992209DCCB00BE1558 /* MyPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresentationController.swift; sourceTree = "<group>"; };
 		444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
@@ -126,7 +126,6 @@
 		4495D8EF21A3FE1300F53F60 /* MyFirstSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFirstSectionCell.xib; sourceTree = "<group>"; };
 		4495D90421A4393800F53F60 /* MyConcernCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
 		4495D90521A4393800F53F60 /* MyConcernCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyConcernCell.xib; sourceTree = "<group>"; };
-		449DB45A21EEF81200BFBBD5 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		44A4B8D1220FA99A002F9ECA /* NavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavigationBarView.xib; sourceTree = "<group>"; };
 		44A4B8D322100419002F9ECA /* RelationRecommendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationRecommendView.swift; sourceTree = "<group>"; };
 		44A4B8D52210043A002F9ECA /* RelationRecommendView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelationRecommendView.xib; sourceTree = "<group>"; };
@@ -154,7 +153,6 @@
 		44B47D6521A300DC0026E2F0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B47D6621A300DC0026E2F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44B47D6921A30C510026E2F0 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
-		44B47D6C21A30DEC0026E2F0 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		44B47D6F21A3D7400026E2F0 /* NetWorkTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkTools.swift; sourceTree = "<group>"; };
 		44B47D7121A3E2480026E2F0 /* MyCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCellModel.swift; sourceTree = "<group>"; };
 		44B47D7321A3F15C0026E2F0 /* MyOtherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOtherCell.swift; sourceTree = "<group>"; };
@@ -505,9 +503,8 @@
 		44B47D6B21A30DBF0026E2F0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				44B47D6C21A30DEC0026E2F0 /* UIColor+Extension.swift */,
-				449DB45A21EEF81200BFBBD5 /* UIView+Extension.swift */,
 				44A4B8DB22111CBB002F9ECA /* Foundation+Extension.swift */,
+				440F1513221FDF240033FF0C /* UIKit+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -784,18 +781,17 @@
 				44BD935621EF63A700954D8C /* NavigationBarView.swift in Sources */,
 				4400915321A55763008B862C /* NoLoginHeaderView.swift in Sources */,
 				44B47D6221A300BA0026E2F0 /* MyTabBar.swift in Sources */,
-				449DB45B21EEF81200BFBBD5 /* UIView+Extension.swift in Sources */,
 				44B47D7221A3E2480026E2F0 /* MyCellModel.swift in Sources */,
 				44B47D7521A3F15C0026E2F0 /* MyOtherCell.swift in Sources */,
 				442D68982209DA5600BE1558 /* PopoverAnimator.swift in Sources */,
 				44A4B8D922101E12002F9ECA /* RelationRecommendCell.swift in Sources */,
+				440F1514221FDF240033FF0C /* UIKit+Extension.swift in Sources */,
 				44B47D6321A300BA0026E2F0 /* MyTabBarController.swift in Sources */,
 				44012DEB21D1FB3B0017E03E /* SettingViewController.swift in Sources */,
 				44B47D6A21A30C510026E2F0 /* Const.swift in Sources */,
 				44B47D7021A3D7400026E2F0 /* NetWorkTools.swift in Sources */,
 				444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */,
 				440F1510221FBC770033FF0C /* DongtaiCollectionView.swift in Sources */,
-				44B47D6D21A30DEC0026E2F0 /* UIColor+Extension.swift in Sources */,
 				44C2EF0B21E873E7004C3659 /* OfflineDownloadCell.swift in Sources */,
 				44C2EF6221EA3F8C004C3659 /* UserDetailHeaderView.swift in Sources */,
 				44C2EF6621EC87B8004C3659 /* UserDetail.swift in Sources */,
