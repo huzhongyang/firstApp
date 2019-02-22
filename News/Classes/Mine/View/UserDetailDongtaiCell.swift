@@ -15,6 +15,7 @@ class UserDetailDongtaiCell: UITableViewCell {
         didSet {
             avatarImageView.kf.setImage(with: URL(string: dongtai!.user.avatar_url))
             nameLabel.text = dongtai!.user.screen_name
+            modifyTimeLabel.text = dongtai!.createTime
             likeButton.setTitle(dongtai!.diggCount, for: .normal)
             commentButton.setTitle(dongtai!.commentCount, for: .normal)
             forwardButton.setTitle(dongtai!.forwardCount, for: .normal)
