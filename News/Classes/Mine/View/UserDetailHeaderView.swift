@@ -250,7 +250,10 @@ extension UserDetailHeaderView {
     
     /// 发私信 按钮点击
     @IBAction func sendMailButtonClicked() {
-        
+        let storyboard = UIStoryboard(name: String(describing: MoreLoginViewController.self), bundle: nil)
+        let moreLoginVC = storyboard.instantiateViewController(withIdentifier: String(describing: MoreLoginViewController.self)) as! MoreLoginViewController
+        moreLoginVC.modalSize = (width: .full, height: .custom(size: Float(screenHeight - (isIPhoneX ? 44 : 20))))
+        UIApplication.shared.keyWindow?.rootViewController?.present(moreLoginVC, animated: true, completion: nil)
     }
     
     /// 关注 按钮点击
