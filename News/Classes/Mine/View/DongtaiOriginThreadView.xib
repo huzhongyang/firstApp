@@ -25,9 +25,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Myp-tS-HR5">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Myp-tS-HR5" customClass="DongtaiCollectionView" customModule="News" customModuleProvider="target">
                     <rect key="frame" x="15" y="10" width="345" height="201"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tKn-VB-ygS">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -36,7 +36,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
-            <color key="backgroundColor" red="0.58823529409999997" green="0.58823529409999997" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Myp-tS-HR5" secondAttribute="bottom" id="7zH-Ye-ZNz"/>
                 <constraint firstItem="sB3-Z8-Kv3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Gbp-IK-dFQ"/>
@@ -49,7 +49,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="collectionView" destination="Myp-tS-HR5" id="5aZ-Ao-Yly"/>
+                <outlet property="collectionView" destination="Myp-tS-HR5" id="slQ-LZ-yhX"/>
                 <outlet property="contentLabel" destination="sB3-Z8-Kv3" id="SRL-i3-Ivz"/>
                 <outlet property="contentLabelHeight" destination="QQ8-aW-KfN" id="dkK-uM-oMj"/>
             </connections>

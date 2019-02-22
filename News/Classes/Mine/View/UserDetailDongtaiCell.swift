@@ -44,7 +44,7 @@ class UserDetailDongtaiCell: UITableViewCell {
             case .postContent: // 发布了文字内容
                 middleView.addSubview(collectionView)
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai!.collectionViewW, height: dongtai!.collectionViewH)
-                collectionView.reloadData()
+                collectionView.thumbImageList = dongtai!.thumb_image_list
                 
             case .commentOrQuoteContent: // 引用或评论
                 middleView.addSubview(originThreadView)
@@ -60,17 +60,22 @@ class UserDetailDongtaiCell: UITableViewCell {
         return originThreadView
     }()
     
-    private lazy var collectionView: UICollectionView = {
-       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: DongtaiCollectionViewFlowLayout())
-        collectionView.register(UINib(nibName: String(describing: DongtaiCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: DongtaiCollectionViewCell.self))
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.isScrollEnabled = false
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.theme_backgroundColor = "colors.cellBackgroundColor"
+    /// 懒加载 collectionView
+    private lazy var collectionView: DongtaiCollectionView = {
+        let collectionView = DongtaiCollectionView.loadViewFromNib()
         return collectionView
     }()
+//    private lazy var collectionView: UICollectionView = {
+//       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: DongtaiCollectionViewFlowLayout())
+//        collectionView.register(UINib(nibName: String(describing: DongtaiCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: DongtaiCollectionViewCell.self))
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
+//        collectionView.isScrollEnabled = false
+//        collectionView.showsVerticalScrollIndicator = false
+//        collectionView.showsHorizontalScrollIndicator = false
+//        collectionView.theme_backgroundColor = "colors.cellBackgroundColor"
+//        return collectionView
+//    }()
     
     /// 懒加载 发布视频或文章
     private lazy var postVideoOrArticleView: PostVideoOrArticleView = {
@@ -131,15 +136,5 @@ extension UserDetailDongtaiCell: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return Calculate.collectionViewCellSize(dongtai!.thumb_image_list.count)
-    }
-}
-
-// 代码创建 collectionview 时, 必须指定一个布局样式, 否则会报错.
-// 从 xib 创建不用, 因为 xib 中已经有了一个布局样式
-class DongtaiCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    override func prepare() {
-        super.prepare()
-        minimumLineSpacing = 5
-        minimumInteritemSpacing = 5
     }
 }

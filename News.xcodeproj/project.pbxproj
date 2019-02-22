@@ -22,6 +22,8 @@
 		440A5FBD221958720096B4E2 /* DongtaiCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440A5FBB221958720096B4E2 /* DongtaiCollectionViewCell.xib */; };
 		440F150C221F9CFC0033FF0C /* DongtaiOriginThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F150B221F9CFC0033FF0C /* DongtaiOriginThreadView.swift */; };
 		440F150E221F9D740033FF0C /* DongtaiOriginThreadView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440F150D221F9D740033FF0C /* DongtaiOriginThreadView.xib */; };
+		440F1510221FBC770033FF0C /* DongtaiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440F150F221FBC770033FF0C /* DongtaiCollectionView.swift */; };
+		440F1512221FCE8F0033FF0C /* DongtaiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440F1511221FCE8F0033FF0C /* DongtaiCollectionView.xib */; };
 		442D68982209DA5600BE1558 /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D68972209DA5600BE1558 /* PopoverAnimator.swift */; };
 		442D689A2209DCCB00BE1558 /* MyPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D68992209DCCB00BE1558 /* MyPresentationController.swift */; };
 		444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */; };
@@ -114,6 +116,8 @@
 		440A5FBB221958720096B4E2 /* DongtaiCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiCollectionViewCell.xib; sourceTree = "<group>"; };
 		440F150B221F9CFC0033FF0C /* DongtaiOriginThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongtaiOriginThreadView.swift; sourceTree = "<group>"; };
 		440F150D221F9D740033FF0C /* DongtaiOriginThreadView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiOriginThreadView.xib; sourceTree = "<group>"; };
+		440F150F221FBC770033FF0C /* DongtaiCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongtaiCollectionView.swift; sourceTree = "<group>"; };
+		440F1511221FCE8F0033FF0C /* DongtaiCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiCollectionView.xib; sourceTree = "<group>"; };
 		442D68972209DA5600BE1558 /* PopoverAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
 		442D68992209DCCB00BE1558 /* MyPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresentationController.swift; sourceTree = "<group>"; };
 		444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 				440A5FBB221958720096B4E2 /* DongtaiCollectionViewCell.xib */,
 				440F150B221F9CFC0033FF0C /* DongtaiOriginThreadView.swift */,
 				440F150D221F9D740033FF0C /* DongtaiOriginThreadView.xib */,
+				440F150F221FBC770033FF0C /* DongtaiCollectionView.swift */,
+				440F1511221FCE8F0033FF0C /* DongtaiCollectionView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -645,6 +651,7 @@
 			files = (
 				440A5FB922194BDA0096B4E2 /* PostVideoOrArticleView.xib in Resources */,
 				44A4B8DA22101E12002F9ECA /* RelationRecommendCell.xib in Resources */,
+				440F1512221FCE8F0033FF0C /* DongtaiCollectionView.xib in Resources */,
 				44C2EF5C21E9F9AD004C3659 /* default_theme.plist in Resources */,
 				440F150E221F9D740033FF0C /* DongtaiOriginThreadView.xib in Resources */,
 				44B47D1E21A2FFBA0026E2F0 /* LaunchScreen.storyboard in Resources */,
@@ -787,6 +794,7 @@
 				44B47D6A21A30C510026E2F0 /* Const.swift in Sources */,
 				44B47D7021A3D7400026E2F0 /* NetWorkTools.swift in Sources */,
 				444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */,
+				440F1510221FBC770033FF0C /* DongtaiCollectionView.swift in Sources */,
 				44B47D6D21A30DEC0026E2F0 /* UIColor+Extension.swift in Sources */,
 				44C2EF0B21E873E7004C3659 /* OfflineDownloadCell.swift in Sources */,
 				44C2EF6221EA3F8C004C3659 /* UserDetailHeaderView.swift in Sources */,

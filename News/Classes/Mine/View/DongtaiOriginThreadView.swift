@@ -14,7 +14,7 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
         didSet {
             contentLabel.text = originThread!.content
             contentLabelHeight.constant = originThread!.contentH!
-            
+            collectionView.thumbImageList = originThread!.thumb_image_list
             layoutIfNeeded()
         }
     }
@@ -24,7 +24,7 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
     /// 引用内容 Label 的高度
     @IBOutlet weak var contentLabelHeight: NSLayoutConstraint!
     /// 引用内容的 collectionView
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: DongtaiCollectionView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
