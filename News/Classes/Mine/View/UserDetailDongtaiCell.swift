@@ -31,21 +31,34 @@ class UserDetailDongtaiCell: UITableViewCell {
             if middleView.contains(collectionView) {
                 collectionView.removeFromSuperview()
             }
+            if middleView.contains(originThreadView) {
+                originThreadView.removeFromSuperview()
+            }
             
             switch dongtai!.item_type {
             case .postVideoOrArticle: // 发布了文章或视频
                 middleView.addSubview(postVideoOrArticleView)
-                postVideoOrArticleView.frame = CGRect(x: 0, y: 0, width: screenWidth - 30, height: middleView.height)
+                postVideoOrArticleView.frame = CGRect(x: 15, y: 0, width: screenWidth - 30, height: middleView.height)
                 postVideoOrArticleView.group = dongtai!.group
+                
             case .postContent: // 发布了文字内容
                 middleView.addSubview(collectionView)
-                collectionView.frame = CGRect(x: 0, y: 0, width: dongtai!.collectionViewW, height: dongtai!.collectionViewH)
+                collectionView.frame = CGRect(x: 15, y: 0, width: dongtai!.collectionViewW, height: dongtai!.collectionViewH)
                 collectionView.reloadData()
+                
             case .commentOrQuoteContent: // 引用或评论
-                print("")
+                middleView.addSubview(originThreadView)
+                originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai!.origin_thread.height!)
+                originThreadView.originThread = dongtai!.origin_thread
             }
         }
     }
+    
+    /// 懒加载 引用或评论 view
+    private lazy var originThreadView: DongtaiOriginThreadView = {
+        let originThreadView = DongtaiOriginThreadView.loadViewFromNib()
+        return originThreadView
+    }()
     
     private lazy var collectionView: UICollectionView = {
        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: DongtaiCollectionViewFlowLayout())

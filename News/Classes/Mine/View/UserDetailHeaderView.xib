@@ -272,7 +272,7 @@
                         <constraint firstItem="jri-RP-M0v" firstAttribute="leading" secondItem="72O-RH-Jfa" secondAttribute="trailing" constant="15" id="zJj-un-ID7"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL1-CC-UNy">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL1-CC-UNy">
                     <rect key="frame" x="0.0" y="354" width="375" height="615"/>
                 </scrollView>
             </subviews>

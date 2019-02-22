@@ -14,7 +14,6 @@ class DongtaiCollectionViewCell: UICollectionViewCell {
     var thumbImage: ThumbImage? {
         didSet {
             thumbImageView.kf.setImage(with: URL(string: thumbImage!.urlString))
-            // 测试
         }
     }
 
