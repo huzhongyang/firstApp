@@ -15,6 +15,8 @@ protocol NetWorkToolProtocol {
     // ------------------------------- 首页 home -------------------------------
     /// 首页顶部新闻标题的数据
     static func loadHomeNewsTitleData(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
+    /// 首页顶部导航栏搜索内容数据
+    static func loadHomeSearchSuggestInfo(completionHandler: @escaping (_ suggestInfo: String) -> ())
     
     // ------------------------------- 我的 mine -------------------------------
     /// 我的界面 cell 的数据
@@ -63,6 +65,24 @@ extension NetWorkToolProtocol {
                         }
                         completionHandler(titles)
                     }
+                }
+            }
+        }
+    }
+    
+    /// 首页顶部导航栏搜索内容数据
+    static func loadHomeSearchSuggestInfo(completionHandler: @escaping (_ suggestInfo: String) -> ()) {
+        let url = BASE_URL + "/search/suggest/homepage_suggest/?"
+        let params = ["device_id": device_id,
+                      "iid": iid]
+        
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else { return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"] == "success" else { return }
+                if let data = json["data"].dictionary {
+                    completionHandler(data["homepage_search_suggest"]!.string!)
                 }
             }
         }

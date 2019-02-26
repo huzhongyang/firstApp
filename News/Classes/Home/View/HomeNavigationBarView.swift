@@ -23,7 +23,14 @@ class HomeNavigationBarView: UIView, NibLoadable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        searchButton.contentHorizontalAlignment = .left
+        searchButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        searchButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
+        searchButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        // 首页顶部导航栏搜索内容数据
+        NetWorkTool.loadHomeSearchSuggestInfo { (suggestInfo) in
+            self.searchButton.setTitle(suggestInfo, for: .normal)
+        }
     }
     
     // 控件的固有属性大小
