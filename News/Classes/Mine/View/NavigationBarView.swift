@@ -22,7 +22,7 @@ class NavigationBarView: UIView, NibLoadable {
     }
     
     
-    var goBackButtonClicked: (() -> ())?
+    var goBackButtonClicked: (()->())?
     
     /// 标题
     @IBOutlet weak var nameLabel: UILabel!

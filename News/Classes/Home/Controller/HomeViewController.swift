@@ -13,12 +13,21 @@ class HomeViewController: UIViewController {
     /// 标题数据表
     fileprivate let newsTitleTable = NewsTitleTable()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
         navigationController?.navigationBar.barStyle = .black
         navigationItem.titleView = navigationBarView
+        // 点击头像按钮, 跳转到 Mine 页面
+        navigationBarView.didSelectedAvatarButton = { [weak self] in
+            self!.navigationController?.pushViewController(MineViewController(), animated: true)
+        }
         
         NetWorkTool.loadHomeNewsTitleData { (titles) in
             // 向数据库中插入数据
