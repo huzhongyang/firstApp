@@ -29,6 +29,8 @@
 		442D689A2209DCCB00BE1558 /* MyPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D68992209DCCB00BE1558 /* MyPresentationController.swift */; };
 		444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */; };
 		444F9B7921B5603E009ACAF7 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */; };
+		448C684B22252B3C003580C4 /* HomeNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */; };
+		448C684D22252B86003580C4 /* HomeNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448C684C22252B86003580C4 /* HomeNavigationBarView.xib */; };
 		4495D8F021A3FE1300F53F60 /* MyFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495D8EE21A3FE1300F53F60 /* MyFirstSectionCell.swift */; };
 		4495D8F121A3FE1300F53F60 /* MyFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4495D8EF21A3FE1300F53F60 /* MyFirstSectionCell.xib */; };
 		4495D90621A4393800F53F60 /* MyConcernCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495D90421A4393800F53F60 /* MyConcernCell.swift */; };
@@ -122,6 +124,8 @@
 		442D68992209DCCB00BE1558 /* MyPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresentationController.swift; sourceTree = "<group>"; };
 		444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
 		444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
+		448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBarView.swift; sourceTree = "<group>"; };
+		448C684C22252B86003580C4 /* HomeNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavigationBarView.xib; sourceTree = "<group>"; };
 		4495D8EE21A3FE1300F53F60 /* MyFirstSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstSectionCell.swift; sourceTree = "<group>"; };
 		4495D8EF21A3FE1300F53F60 /* MyFirstSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFirstSectionCell.xib; sourceTree = "<group>"; };
 		4495D90421A4393800F53F60 /* MyConcernCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
@@ -307,6 +311,8 @@
 		44B47D4621A300AF0026E2F0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */,
+				448C684C22252B86003580C4 /* HomeNavigationBarView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -657,6 +663,7 @@
 				44012DF321D223170017E03E /* SettingCell.xib in Resources */,
 				4400915521A55782008B862C /* NoLoginHeaderView.xib in Resources */,
 				44A4B8D2220FA99A002F9ECA /* NavigationBarView.xib in Resources */,
+				448C684D22252B86003580C4 /* HomeNavigationBarView.xib in Resources */,
 				44A4B8E422150E36002F9ECA /* UserDetailDongtaiCell.xib in Resources */,
 				440A5FBD221958720096B4E2 /* DongtaiCollectionViewCell.xib in Resources */,
 				44B47D7621A3F15C0026E2F0 /* MyOtherCell.xib in Resources */,
@@ -783,6 +790,7 @@
 				44B47D6221A300BA0026E2F0 /* MyTabBar.swift in Sources */,
 				44B47D7221A3E2480026E2F0 /* MyCellModel.swift in Sources */,
 				44B47D7521A3F15C0026E2F0 /* MyOtherCell.swift in Sources */,
+				448C684B22252B3C003580C4 /* HomeNavigationBarView.swift in Sources */,
 				442D68982209DA5600BE1558 /* PopoverAnimator.swift in Sources */,
 				44A4B8D922101E12002F9ECA /* RelationRecommendCell.swift in Sources */,
 				440F1514221FDF240033FF0C /* UIKit+Extension.swift in Sources */,

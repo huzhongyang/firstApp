@@ -17,9 +17,18 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         
+        navigationController?.navigationBar.barStyle = .black
+        navigationItem.titleView = navigationBarView
+        
         NetWorkTool.loadHomeNewsTitleData { (titles) in
             // 向数据库中插入数据
             self.newsTitleTable.insert(titles)
         }
     }
+    
+    /// 懒加载首页头部视图
+    lazy var navigationBarView: HomeNavigationBarView = {
+        let navigationBarView = HomeNavigationBarView.loadViewFromNib()
+        return navigationBarView
+    }()
 }

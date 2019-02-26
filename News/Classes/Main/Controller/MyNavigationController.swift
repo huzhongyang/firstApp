@@ -12,6 +12,26 @@ class MyNavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 首页 navigationBar 背景图片
+        if UserDefaults.standard.bool(forKey: isNight) {
+            navigationBar.setBackgroundImage(UIImage(named: "navigation_background_night"), for: .default)
+        } else {
+            navigationBar.setBackgroundImage(UIImage(named: "navigation_background"), for: .default)
+        }
+        
+        // 监听日间/夜间按钮的点击,
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: NSNotification.Name("dayOrNightButtonClicked"), object: nil)
+        }
+    
+     @objc func receiveDayOrNightButtonClicked(notification: Notification) {
+        let selected = notification.object as! Bool
+        if selected {
+            navigationBar.setBackgroundImage(UIImage(named: "navigation_background_night"), for: .default)
+        } else {
+            navigationBar.setBackgroundImage(UIImage(named: "navigation_background"), for: .default)
+        }
+        
         // 全局拖拽手势
         initGlobalPan()
     }

@@ -70,7 +70,6 @@ extension Int {
         if hour > 0 { return String(format: "%02d:%02d:%02d", hour, minute, second) }
         return String(format: "%02d:%02d", minute, second)
     }
-    
 }
 
 extension Date {
