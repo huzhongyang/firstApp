@@ -31,6 +31,8 @@
 		444F9B7921B5603E009ACAF7 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */; };
 		448C684B22252B3C003580C4 /* HomeNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */; };
 		448C684D22252B86003580C4 /* HomeNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448C684C22252B86003580C4 /* HomeNavigationBarView.xib */; };
+		448C68542225872B003580C4 /* WeitoutiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C68522225872B003580C4 /* WeitoutiaoViewController.swift */; };
+		448C68552225872B003580C4 /* WeitoutiaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448C68532225872B003580C4 /* WeitoutiaoViewController.xib */; };
 		4495D8F021A3FE1300F53F60 /* MyFirstSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495D8EE21A3FE1300F53F60 /* MyFirstSectionCell.swift */; };
 		4495D8F121A3FE1300F53F60 /* MyFirstSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4495D8EF21A3FE1300F53F60 /* MyFirstSectionCell.xib */; };
 		4495D90621A4393800F53F60 /* MyConcernCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495D90421A4393800F53F60 /* MyConcernCell.swift */; };
@@ -126,6 +128,8 @@
 		444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
 		448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBarView.swift; sourceTree = "<group>"; };
 		448C684C22252B86003580C4 /* HomeNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavigationBarView.xib; sourceTree = "<group>"; };
+		448C68522225872B003580C4 /* WeitoutiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeitoutiaoViewController.swift; sourceTree = "<group>"; };
+		448C68532225872B003580C4 /* WeitoutiaoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeitoutiaoViewController.xib; sourceTree = "<group>"; };
 		4495D8EE21A3FE1300F53F60 /* MyFirstSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyFirstSectionCell.swift; sourceTree = "<group>"; };
 		4495D8EF21A3FE1300F53F60 /* MyFirstSectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFirstSectionCell.xib; sourceTree = "<group>"; };
 		4495D90421A4393800F53F60 /* MyConcernCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyConcernCell.swift; sourceTree = "<group>"; };
@@ -219,6 +223,40 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		448C684E222586C0003580C4 /* Weitoutiao */ = {
+			isa = PBXGroup;
+			children = (
+				448C684F222586C0003580C4 /* Controller */,
+				448C6850222586C0003580C4 /* Model */,
+				448C6851222586C0003580C4 /* View */,
+			);
+			name = Weitoutiao;
+			path = News/Classes/Weitoutiao;
+			sourceTree = SOURCE_ROOT;
+		};
+		448C684F222586C0003580C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				448C68522225872B003580C4 /* WeitoutiaoViewController.swift */,
+				448C68532225872B003580C4 /* WeitoutiaoViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		448C6850222586C0003580C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		448C6851222586C0003580C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		44B47D0721A2FFB90026E2F0 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +313,7 @@
 			children = (
 				44B47D4221A300AF0026E2F0 /* Home */,
 				44B47D4721A300AF0026E2F0 /* Video */,
+				448C684E222586C0003580C4 /* Weitoutiao */,
 				44B47D4C21A300AF0026E2F0 /* Huoshan */,
 				44B47D5121A300AF0026E2F0 /* Mine */,
 				44B47D5621A300AF0026E2F0 /* Main */,
@@ -667,6 +706,7 @@
 				44A4B8E422150E36002F9ECA /* UserDetailDongtaiCell.xib in Resources */,
 				440A5FBD221958720096B4E2 /* DongtaiCollectionViewCell.xib in Resources */,
 				44B47D7621A3F15C0026E2F0 /* MyOtherCell.xib in Resources */,
+				448C68552225872B003580C4 /* WeitoutiaoViewController.xib in Resources */,
 				44C2EF6421EA3F95004C3659 /* UserDetailHeaderView.xib in Resources */,
 				44CC100522094CE300A32811 /* UserDetailBottomPopController.storyboard in Resources */,
 				44A4B8D62210043A002F9ECA /* RelationRecommendView.xib in Resources */,
@@ -778,6 +818,7 @@
 				44012DEF21D21CEF0017E03E /* SettingModel.swift in Sources */,
 				44B47D5A21A300AF0026E2F0 /* HomeViewController.swift in Sources */,
 				44CC10012209285600A32811 /* UserDetailBottomPushController.swift in Sources */,
+				448C68542225872B003580C4 /* WeitoutiaoViewController.swift in Sources */,
 				44B47D5C21A300AF0026E2F0 /* HuoshanViewController.swift in Sources */,
 				44C2EF5F21EA3CF0004C3659 /* UserDetailViewController.swift in Sources */,
 				4495D90621A4393800F53F60 /* MyConcernCell.swift in Sources */,
@@ -973,7 +1014,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C7EV65X5N8;
 				INFOPLIST_FILE = "$(SRCROOT)/News/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -996,7 +1037,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = C7EV65X5N8;
 				INFOPLIST_FILE = "$(SRCROOT)/News/Others/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1057,6 +1098,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C7EV65X5N8;
 				INFOPLIST_FILE = NewsUITests/Info.plist;
@@ -1067,6 +1109,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hzy.NewsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = News;
@@ -1077,6 +1120,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C7EV65X5N8;
 				INFOPLIST_FILE = NewsUITests/Info.plist;
@@ -1087,6 +1131,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hzy.NewsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = News;

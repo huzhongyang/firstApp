@@ -35,8 +35,8 @@ class MyTabBarController: UITabBarController {
                     setNightChildController(controller: childController, imageName: "video")
                 case "小视频":
                     setNightChildController(controller: childController, imageName: "huoshan")
-                case "未登录":
-                    setNightChildController(controller: childController, imageName: "no_login")
+                case "微头条":
+                    setNightChildController(controller: childController, imageName: "weitoutiao")
                 default:
                     break
                 }
@@ -51,8 +51,8 @@ class MyTabBarController: UITabBarController {
                     setDayChildController(controller: childController, imageName: "video")
                 case "小视频":
                     setDayChildController(controller: childController, imageName: "huoshan")
-                case "未登录":
-                    setDayChildController(controller: childController, imageName: "no_login")
+                case "微头条":
+                    setDayChildController(controller: childController, imageName: "weitoutiao")
                 default:
                     break
                 }
@@ -77,8 +77,8 @@ class MyTabBarController: UITabBarController {
     private func addChildViewControllers() {
         setChildViewController(HomeViewController(), title: "首页", imageName: "home", selectedImageName: "home_tabbar_press_32x32_")
         setChildViewController(VideoViewController(), title: "视频", imageName: "video", selectedImageName: "video_tabbar_press_32x32_")
+        setChildViewController(WeitoutiaoViewController(), title: "微头条", imageName: "weitoutiao", selectedImageName: "weitoutiao_tabbar_press_32x32_")
         setChildViewController(HuoshanViewController(), title: "小视频", imageName: "huoshan", selectedImageName: "huoshan_tabbar_press_32x32_")
-        setChildViewController(MineViewController(), title: "未登录", imageName: "no_login", selectedImageName: "mine_tabbar_press_32x32_")
         
         // tabBar 是 readonly 属性， 不能直接修改。 利用 KVC 把 readonly 属性的权限改过来
         setValue(MyTabBar(), forKey: "tabBar")

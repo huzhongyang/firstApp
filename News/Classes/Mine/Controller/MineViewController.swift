@@ -25,8 +25,6 @@ class MineViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 隐藏 navigationBar
-        navigationController?.navigationBar.isHidden = true
         // 隐藏多余 cell
         tableView.tableFooterView = UIView()
         // 头部视图
