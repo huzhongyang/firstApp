@@ -106,7 +106,7 @@
                 <outlet property="navigationBar" destination="Rrt-df-dta" id="LIB-p0-KvJ"/>
                 <outlet property="returnButton" destination="cuM-9i-7V2" id="AbV-NS-3b5"/>
             </connections>
-            <point key="canvasLocation" x="138.40000000000001" y="131.33433283358323"/>
+            <point key="canvasLocation" x="-86" y="143"/>
         </view>
     </objects>
 </document>

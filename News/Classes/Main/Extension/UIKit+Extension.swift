@@ -115,4 +115,9 @@ extension UIColor {
     class func globalBackgroundColor() -> UIColor {
         return UIColor(r: 248, g: 249, b: 247)
     }
+    
+    ///
+    class func grayColor113() -> UIColor {
+        return UIColor(r: 113, g: 113, b: 113)
+    }
 }

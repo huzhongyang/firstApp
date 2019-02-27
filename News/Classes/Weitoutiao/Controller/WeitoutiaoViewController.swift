@@ -12,19 +12,51 @@ class WeitoutiaoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        // 设置界面
+        setupUI()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    deinit {
+        // 控制器销毁，移除通知
+        NotificationCenter.default.removeObserver(self)
     }
-    */
+}
 
+extension WeitoutiaoViewController {
+    /// 设置界面
+    private func setupUI() {
+        // 注册 日间/夜间 按钮，点击通知
+        NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: Notification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
+        view.theme_backgroundColor = "colors.cellBackgroundColor"
+        if UserDefaults.standard.bool(forKey: isNight) { // 夜间
+            navigationController?.navigationBar.barStyle = .black
+            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white_night"), for: .default)
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.grayColor113()]
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "follow_title_profile_night_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        } else { // 日间
+            navigationController?.navigationBar.barStyle = .default
+            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white"), for: .default)
+            // 导航栏右上角按钮
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        }
+    }
+    
+    /// 导航栏右上角按钮点击
+    @objc private func rightBarButtonClicked() {
+        
+    }
+    
+    @objc private func receiveDayOrNightButtonClicked(notification: Notification) {
+        let selected = notification.object as! Bool
+        if selected { // 设置为夜间
+            navigationController?.navigationBar.barStyle = .black
+            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white_night"), for: .default)
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.grayColor113()]
+        } else { // 设置为日间
+            navigationController?.navigationBar.barStyle = .default
+            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white"), for: .default)
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+            navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white"), for: .default)
+        }
+    }
 }
