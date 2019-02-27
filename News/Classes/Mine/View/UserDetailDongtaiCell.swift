@@ -46,6 +46,7 @@ class UserDetailDongtaiCell: UITableViewCell {
                 middleView.addSubview(collectionView)
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai!.collectionViewW, height: dongtai!.collectionViewH)
                 collectionView.thumbImageList = dongtai!.thumb_image_list
+                collectionView.largeImages = dongtai!.large_image_list
                 
             case .commentOrQuoteContent: // 引用或评论
                 middleView.addSubview(originThreadView)
@@ -66,17 +67,6 @@ class UserDetailDongtaiCell: UITableViewCell {
         let collectionView = DongtaiCollectionView.loadViewFromNib()
         return collectionView
     }()
-//    private lazy var collectionView: UICollectionView = {
-//       let collectionView = UICollectionView(frame: .zero, collectionViewLayout: DongtaiCollectionViewFlowLayout())
-//        collectionView.register(UINib(nibName: String(describing: DongtaiCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: DongtaiCollectionViewCell.self))
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.isScrollEnabled = false
-//        collectionView.showsVerticalScrollIndicator = false
-//        collectionView.showsHorizontalScrollIndicator = false
-//        collectionView.theme_backgroundColor = "colors.cellBackgroundColor"
-//        return collectionView
-//    }()
     
     /// 懒加载 发布视频或文章
     private lazy var postVideoOrArticleView: PostVideoOrArticleView = {
@@ -119,23 +109,5 @@ class UserDetailDongtaiCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-}
-
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
-extension UserDetailDongtaiCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dongtai!.thumb_image_list.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DongtaiCollectionViewCell.self), for: indexPath) as! DongtaiCollectionViewCell
-        cell.thumbImage = dongtai!.thumb_image_list[indexPath.row]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return Calculate.collectionViewCellSize(dongtai!.thumb_image_list.count)
     }
 }

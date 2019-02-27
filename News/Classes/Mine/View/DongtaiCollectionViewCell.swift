@@ -11,9 +11,17 @@ import Kingfisher
 
 class DongtaiCollectionViewCell: UICollectionViewCell {
     
+    /// collectionView 上的缩略图
     var thumbImage: ThumbImage? {
         didSet {
             thumbImageView.kf.setImage(with: URL(string: thumbImage!.urlString))
+        }
+    }
+    
+    /// 大图
+    var largeImage: LargeImage? {
+        didSet {
+            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString))
         }
     }
 

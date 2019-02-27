@@ -29,6 +29,8 @@
 		442D689A2209DCCB00BE1558 /* MyPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D68992209DCCB00BE1558 /* MyPresentationController.swift */; };
 		444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */; };
 		444F9B7921B5603E009ACAF7 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */; };
+		44526A0C2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44526A0A2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift */; };
+		44526A0D2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44526A0B2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib */; };
 		448C684B22252B3C003580C4 /* HomeNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */; };
 		448C684D22252B86003580C4 /* HomeNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448C684C22252B86003580C4 /* HomeNavigationBarView.xib */; };
 		448C68542225872B003580C4 /* WeitoutiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C68522225872B003580C4 /* WeitoutiaoViewController.swift */; };
@@ -126,6 +128,8 @@
 		442D68992209DCCB00BE1558 /* MyPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPresentationController.swift; sourceTree = "<group>"; };
 		444F9B7621B55FF5009ACAF7 /* MoreLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLoginViewController.swift; sourceTree = "<group>"; };
 		444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
+		44526A0A2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDongtaiLargeImageController.swift; sourceTree = "<group>"; };
+		44526A0B2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewDongtaiLargeImageController.xib; sourceTree = "<group>"; };
 		448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBarView.swift; sourceTree = "<group>"; };
 		448C684C22252B86003580C4 /* HomeNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavigationBarView.xib; sourceTree = "<group>"; };
 		448C68522225872B003580C4 /* WeitoutiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeitoutiaoViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 				44CC100222094CB700A32811 /* UserDetailBottomPopController.swift */,
 				44CC100422094CE300A32811 /* UserDetailBottomPopController.storyboard */,
 				442D68992209DCCB00BE1558 /* MyPresentationController.swift */,
+				44526A0A2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift */,
+				44526A0B2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -708,6 +714,7 @@
 				44B47D7621A3F15C0026E2F0 /* MyOtherCell.xib in Resources */,
 				448C68552225872B003580C4 /* WeitoutiaoViewController.xib in Resources */,
 				44C2EF6421EA3F95004C3659 /* UserDetailHeaderView.xib in Resources */,
+				44526A0D2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib in Resources */,
 				44CC100522094CE300A32811 /* UserDetailBottomPopController.storyboard in Resources */,
 				44A4B8D62210043A002F9ECA /* RelationRecommendView.xib in Resources */,
 				4495D8F121A3FE1300F53F60 /* MyFirstSectionCell.xib in Resources */,
@@ -840,6 +847,7 @@
 				44B47D6A21A30C510026E2F0 /* Const.swift in Sources */,
 				44B47D7021A3D7400026E2F0 /* NetWorkTools.swift in Sources */,
 				444F9B7721B55FF5009ACAF7 /* MoreLoginViewController.swift in Sources */,
+				44526A0C2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift in Sources */,
 				440F1510221FBC770033FF0C /* DongtaiCollectionView.swift in Sources */,
 				44C2EF0B21E873E7004C3659 /* OfflineDownloadCell.swift in Sources */,
 				44C2EF6221EA3F8C004C3659 /* UserDetailHeaderView.swift in Sources */,
