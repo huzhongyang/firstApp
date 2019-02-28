@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
+import SVProgressHUD
+import Photos
 
 class PreviewDongtaiLargeImageController: UIViewController {
     
@@ -33,7 +36,32 @@ class PreviewDongtaiLargeImageController: UIViewController {
     
     /// 图片保存按钮点击
     @IBAction func saveButtonClicked(_ sender: UIButton) {
-        
+        let largeImage = images[selectedIndex]
+        ImageDownloader.default.downloadImage(with: URL(string: largeImage.urlString)!, retrieveImageTask: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
+            let progress = Float(receivedSize) / Float(totalSize)
+            SVProgressHUD.showProgress(progress)
+            SVProgressHUD.setBackgroundColor(.black)
+            SVProgressHUD.setForegroundColor(.white)
+        }) { (image, error, cacheType, imageURL) in
+            PHPhotoLibrary.shared().performChanges({
+                PHAssetChangeRequest.creationRequestForAsset(from: image!)
+            }, completionHandler: { (success, error) in
+                SVProgressHUD.dismiss()
+                if success {
+                    SVProgressHUD.showSuccess(withStatus: "保存成功!")
+                    // 延迟 1s
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        SVProgressHUD.dismiss()
+                    })
+                } else {
+                    SVProgressHUD.showError(withStatus: "保存失败!")
+                    // 延迟 1s
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                        SVProgressHUD.dismiss()
+                    })
+                }
+            })
+        }
     }
 }
 
