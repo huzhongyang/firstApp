@@ -37,18 +37,18 @@ class UserDetailDongtaiCell: UITableViewCell {
             }
             
             switch dongtai!.item_type {
-            case .postVideoOrArticle: // 发布了文章或视频
+            case .postVideoOrArticle, .answerQuestion, .postVideo, .proposeQuestion, .forwardArticle, .postContentAndVideo: // 发布了文章或视频
                 middleView.addSubview(postVideoOrArticleView)
                 postVideoOrArticleView.frame = CGRect(x: 15, y: 0, width: screenWidth - 30, height: middleView.height)
                 postVideoOrArticleView.group = dongtai!.group
                 
-            case .postContent: // 发布了文字内容
+            case .postContent, .postSmallVideo: // 发布了文字内容
                 middleView.addSubview(collectionView)
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai!.collectionViewW, height: dongtai!.collectionViewH)
                 collectionView.thumbImageList = dongtai!.thumb_image_list
                 collectionView.largeImages = dongtai!.large_image_list
                 
-            case .commentOrQuoteContent: // 引用或评论
+            case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
                 middleView.addSubview(originThreadView)
                 originThreadView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: dongtai!.origin_thread.height!)
                 originThreadView.originThread = dongtai!.origin_thread

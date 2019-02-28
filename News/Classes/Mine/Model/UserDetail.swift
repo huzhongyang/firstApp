@@ -186,15 +186,15 @@ struct UserCardUserRelation: HandyJSON {
 // MARK: cell 中间内容的样式
 enum DongtaiItemType: Int, HandyJSONEnum {
     case commentOrQuoteContent = 109   // 引用或者评论别人的内容
-//    case commentOrQuoteOthers = 212    // 引用或者评论别人的内容
+    case commentOrQuoteOthers = 212    // 引用或者评论别人的内容
     case postVideoOrArticle = 151      // 发布了视频和文章
     case postContent = 200             // 发布了文字内容
-//    case answerQuestion = 1028         // 回答了问题    group 的  item_type 7 问答
-//    case proposeQuestion = 1029        // 提出了问题
-//    case postContentAndVideo = 211     // 发布了文字内容和视频
-//    case postVideo = 150               // 发布了视频
-//    case forwardArticle = 110          // 转发了文章 origin_group 不为空了
-//    case postSmallVideo = 300          // 小视频
+    case answerQuestion = 1028         // 回答了问题    group 的  item_type 7 问答
+    case proposeQuestion = 1029        // 提出了问题
+    case postContentAndVideo = 211     // 发布了文字内容和视频
+    case postVideo = 150               // 发布了视频
+    case forwardArticle = 110          // 转发了文章 origin_group 不为空了
+    case postSmallVideo = 300          // 小视频
 }
 
 /// rich_content 中的元素
@@ -231,12 +231,12 @@ struct UserDetailDongtai: HandyJSON {
 //        var height: CGFloat = 115.0 + contentH
         var height: CGFloat = 110.0 + contentH
         switch item_type {
-        case .postVideoOrArticle:   // 发布了视频和文章,提出了问题,回答了问题
+        case .postVideoOrArticle, .postVideo, .proposeQuestion, .forwardArticle, .postContentAndVideo, .answerQuestion:   // 发布了视频和文章,提出了问题,回答了问题
 //            height += 60
             height += 50
-        case .postContent:   // 发布了文字内容
+        case .postContent, .postSmallVideo:   // 发布了文字内容、小视频
             height += (thumb_image_list.count == 0 ? 0 : collectionViewH)
-        case .commentOrQuoteContent:   // 引用或者评论别人的内容
+        case .commentOrQuoteContent, .commentOrQuoteOthers:   // 引用或者评论别人的内容
             height += origin_thread.height!
         }
         return height
