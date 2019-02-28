@@ -46,7 +46,8 @@ class UserDetailViewController: UIViewController {
         bottomViewBottom.constant = isIPhoneX ? 34 : 0
         view.layoutIfNeeded()
         
-        userId = 51025535398
+//        userId = 51025535398
+        userId = 8
         
         /// 获取用户详情数据
         NetWorkTool.loadUserDetail(user_id: userId) { (userDetail) in
@@ -59,7 +60,7 @@ class UserDetailViewController: UIViewController {
                 self.navigationBar.userDetail = userDetail
                 // 判断是否有 bottomView
                 if userDetail.bottom_tab.count == 0 {
-                    self.headerView.height = 969 - 44
+                    self.headerView.height = 979 - 34
                     self.bottomViewBottom.constant = 0
                     self.view.layoutIfNeeded()
                 } else {
@@ -144,8 +145,10 @@ extension UserDetailViewController: UIScrollViewDelegate {
             }
             
             /// 设置 topTabView 滑倒顶部时, 黏住顶部
-            if offsetY >= (14 + headerView.topTabView.frame.minY) {
-                headerView.y = offsetY - 215 + headerView.topTabView.height
+            // 14 + headerView.topTabView.frame.minY = 215
+            let topViewH = CGFloat(14 + headerView.topTabView.frame.minY)
+            if offsetY >= topViewH {
+                headerView.y = offsetY - topViewH
                 // 黏住顶部后, tableview 可以滑动
                 for subview in headerView.bottomScrollView.subviews {
                     let tableview = subview as! UITableView
