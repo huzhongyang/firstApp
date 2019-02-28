@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SVProgressHUD
 
 class DongtaiCollectionViewCell: UICollectionViewCell {
     
@@ -21,7 +22,17 @@ class DongtaiCollectionViewCell: UICollectionViewCell {
     /// 大图
     var largeImage: LargeImage? {
         didSet {
-            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString))
+//            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString))
+            thumbImageView.kf.setImage(with: URL(string: largeImage!.urlString), placeholder: nil, options: nil, progressBlock: { (receivedSize, totalSize) in
+                // 图片加载进度
+                let progress = Float(receivedSize) / Float(totalSize)
+                SVProgressHUD.showProgress(progress)
+                SVProgressHUD.setBackgroundColor(.clear)
+                SVProgressHUD.setForegroundColor(.white)
+            }) { (image, error, cacheType, imageURL) in
+                // 图片加载完成后移除加载进度图
+                SVProgressHUD.dismiss()
+            }
         }
     }
 
