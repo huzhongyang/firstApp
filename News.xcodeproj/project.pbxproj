@@ -31,6 +31,8 @@
 		444F9B7921B5603E009ACAF7 /* MoreLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */; };
 		44526A0C2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44526A0A2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift */; };
 		44526A0D2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44526A0B2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib */; };
+		4486E66D22292FA40050DD04 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4486E66C22292FA40050DD04 /* emojis.plist */; };
+		4486E66F22294D750050DD04 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4486E66E22294D750050DD04 /* Emoji.swift */; };
 		448C684B22252B3C003580C4 /* HomeNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */; };
 		448C684D22252B86003580C4 /* HomeNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448C684C22252B86003580C4 /* HomeNavigationBarView.xib */; };
 		448C68542225872B003580C4 /* WeitoutiaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448C68522225872B003580C4 /* WeitoutiaoViewController.swift */; };
@@ -130,6 +132,8 @@
 		444F9B7821B5603E009ACAF7 /* MoreLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreLoginViewController.storyboard; sourceTree = "<group>"; };
 		44526A0A2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDongtaiLargeImageController.swift; sourceTree = "<group>"; };
 		44526A0B2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreviewDongtaiLargeImageController.xib; sourceTree = "<group>"; };
+		4486E66C22292FA40050DD04 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
+		4486E66E22294D750050DD04 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		448C684A22252B3C003580C4 /* HomeNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBarView.swift; sourceTree = "<group>"; };
 		448C684C22252B86003580C4 /* HomeNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeNavigationBarView.xib; sourceTree = "<group>"; };
 		448C68522225872B003580C4 /* WeitoutiaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeitoutiaoViewController.swift; sourceTree = "<group>"; };
@@ -545,6 +549,7 @@
 				4479E76B21A58C7400B470FA /* Theme */,
 				44B47D6521A300DC0026E2F0 /* AppDelegate.swift */,
 				44B47D6921A30C510026E2F0 /* Const.swift */,
+				4486E66C22292FA40050DD04 /* emojis.plist */,
 				44B47D6621A300DC0026E2F0 /* Info.plist */,
 				44012DEC21D219000017E03E /* settingPlist.plist */,
 			);
@@ -567,6 +572,7 @@
 				4400914A21A52B0F008B862C /* MyTheme.swift */,
 				44C2EF5521E8CF9C004C3659 /* SQLiteManager.swift */,
 				440A5FB42216D5630096B4E2 /* Calculate.swift */,
+				4486E66E22294D750050DD04 /* Emoji.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -718,6 +724,7 @@
 				44CC100522094CE300A32811 /* UserDetailBottomPopController.storyboard in Resources */,
 				44A4B8D62210043A002F9ECA /* RelationRecommendView.xib in Resources */,
 				4495D8F121A3FE1300F53F60 /* MyFirstSectionCell.xib in Resources */,
+				4486E66D22292FA40050DD04 /* emojis.plist in Resources */,
 				44B47D1B21A2FFBA0026E2F0 /* Assets.xcassets in Resources */,
 				44012DED21D219000017E03E /* settingPlist.plist in Resources */,
 				444F9B7921B5603E009ACAF7 /* MoreLoginViewController.storyboard in Resources */,
@@ -823,6 +830,7 @@
 				44A4B8DC22111CBB002F9ECA /* Foundation+Extension.swift in Sources */,
 				44BD935421EF254000954D8C /* UserDetailBottomView.swift in Sources */,
 				44012DEF21D21CEF0017E03E /* SettingModel.swift in Sources */,
+				4486E66F22294D750050DD04 /* Emoji.swift in Sources */,
 				44B47D5A21A300AF0026E2F0 /* HomeViewController.swift in Sources */,
 				44CC10012209285600A32811 /* UserDetailBottomPushController.swift in Sources */,
 				448C68542225872B003580C4 /* WeitoutiaoViewController.swift in Sources */,

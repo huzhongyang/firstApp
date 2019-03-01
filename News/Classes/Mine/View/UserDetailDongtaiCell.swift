@@ -21,7 +21,8 @@ class UserDetailDongtaiCell: UITableViewCell {
             forwardButton.setTitle(dongtai!.forwardCount, for: .normal)
             areaLabel.text = dongtai!.position.position + " "
             readCountLabel.text = dongtai!.readCount + "阅读"
-            contentLabel.text = dongtai!.content
+            // 对内容作处理，显示 emoji 表情
+            contentLabel.attributedText = EmojiManger().showEmoji(content: dongtai!.content, font: contentLabel.font)
             contentLabelHeight.constant = dongtai!.contentH
             allContentLabel.isHidden = dongtai!.contentH >= 110.0 ? false : true
             
@@ -53,7 +54,8 @@ class UserDetailDongtaiCell: UITableViewCell {
                 collectionView.thumbImageList = dongtai!.thumb_image_list
                 collectionView.largeImages = dongtai!.large_image_list
                 if dongtai!.item_type == .postSmallVideo {
-                    collectionView.isPostSmallVideo = true
+                    // 发布了小视频，暂时不处理
+//                    collectionView.isPostSmallVideo = true
                 }
                 
             case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
