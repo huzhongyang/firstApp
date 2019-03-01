@@ -40,13 +40,21 @@ class UserDetailDongtaiCell: UITableViewCell {
             case .postVideoOrArticle, .answerQuestion, .postVideo, .proposeQuestion, .forwardArticle, .postContentAndVideo: // 发布了文章或视频
                 middleView.addSubview(postVideoOrArticleView)
                 postVideoOrArticleView.frame = CGRect(x: 15, y: 0, width: screenWidth - 30, height: middleView.height)
-                postVideoOrArticleView.group = dongtai!.group
+                // 如果 dongtai!.group 里没有数据的话，就从dongtaiQ!.origin_group 中加载数据
+                if dongtai!.group.title == "" {
+                    postVideoOrArticleView.origin_group = dongtai!.origin_group
+                } else {
+                    postVideoOrArticleView.group = dongtai!.group
+                }
                 
             case .postContent, .postSmallVideo: // 发布了文字内容
                 middleView.addSubview(collectionView)
                 collectionView.frame = CGRect(x: 15, y: 0, width: dongtai!.collectionViewW, height: dongtai!.collectionViewH)
                 collectionView.thumbImageList = dongtai!.thumb_image_list
                 collectionView.largeImages = dongtai!.large_image_list
+                if dongtai!.item_type == .postSmallVideo {
+                    collectionView.isPostSmallVideo = true
+                }
                 
             case .commentOrQuoteContent, .commentOrQuoteOthers: // 引用或评论
                 middleView.addSubview(originThreadView)

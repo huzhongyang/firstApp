@@ -22,17 +22,23 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CK4-hg-X2e">
                         <rect key="frame" x="0.0" y="0.0" width="239" height="128"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzM-Ip-kb6">
+                        <rect key="frame" x="104.5" y="47" width="30" height="34"/>
+                    </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="CK4-hg-X2e" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1xl-bm-T1u"/>
                 <constraint firstAttribute="bottom" secondItem="CK4-hg-X2e" secondAttribute="bottom" id="EcH-yA-h4j"/>
+                <constraint firstItem="UzM-Ip-kb6" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="S58-dv-IEG"/>
+                <constraint firstItem="UzM-Ip-kb6" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ocX-KW-7gy"/>
                 <constraint firstAttribute="trailing" secondItem="CK4-hg-X2e" secondAttribute="trailing" id="pfX-l6-w4h"/>
                 <constraint firstItem="CK4-hg-X2e" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vhp-zP-a6b"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="239" height="128"/>
             <connections>
+                <outlet property="iconButton" destination="UzM-Ip-kb6" id="XFl-ri-QTI"/>
                 <outlet property="thumbImageView" destination="CK4-hg-X2e" id="DwX-Nb-cOd"/>
             </connections>
             <point key="canvasLocation" x="288.80000000000001" y="134.03298350824588"/>

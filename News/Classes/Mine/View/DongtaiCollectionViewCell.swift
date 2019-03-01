@@ -12,6 +12,14 @@ import SVProgressHUD
 
 class DongtaiCollectionViewCell: UICollectionViewCell {
     
+    var isPostSmallVideo = false {
+        didSet {
+            if isPostSmallVideo {
+                iconButton.setImage(UIImage(named: "smallvideo_all_32x32_"), for: .normal)
+            }
+        }
+    }
+    
     /// collectionView 上的缩略图
     var thumbImage: ThumbImage? {
         didSet {
@@ -37,6 +45,8 @@ class DongtaiCollectionViewCell: UICollectionViewCell {
     }
 
     @IBOutlet weak var thumbImageView: UIImageView!
+    
+    @IBOutlet weak var iconButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

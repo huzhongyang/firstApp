@@ -9,6 +9,8 @@
 import UIKit
 
 class DongtaiCollectionView: UICollectionView, NibLoadable {
+    
+    var isPostSmallVideo = false
 
     var thumbImageList = [ThumbImage]() {
         didSet {
@@ -45,6 +47,7 @@ extension DongtaiCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DongtaiCollectionViewCell.self), for: indexPath) as! DongtaiCollectionViewCell
         cell.thumbImage = thumbImageList[indexPath.row]
+        cell.isPostSmallVideo = isPostSmallVideo
         return cell
     }
     

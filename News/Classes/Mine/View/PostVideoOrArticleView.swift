@@ -11,10 +11,27 @@ import Kingfisher
 
 class PostVideoOrArticleView: UIView, NibLoadable {
     
+    var origin_group = DongtaiOriginGroup() {
+        didSet {
+            titleLabel.text = origin_group.source + ": " + origin_group.title
+            if origin_group.image_url != "" {
+                iconButton.kf.setBackgroundImage(with: URL(string: origin_group.image_url), for: .normal)
+            }
+            switch origin_group.media_type {
+            case .postArticle:
+                iconButton.setImage(nil, for: .normal)
+            case .postVideo:
+                iconButton.setImage(UIImage(named: "smallvideo_all_32x32_"), for: .normal)
+            }
+        }
+    }
+    
     var group: DongtaiOriginGroup? {
         didSet {
-            titleLabel.text = group!.title
-            iconButton.kf.setBackgroundImage(with: URL(string: group!.image_url), for: .normal)
+            titleLabel.text = " " + group!.title
+            if group!.image_url != "" {
+                iconButton.kf.setBackgroundImage(with: URL(string: group!.image_url), for: .normal)                
+            }
             switch group!.media_type {
             case .postArticle:
                 iconButton.setImage(nil, for: .normal)

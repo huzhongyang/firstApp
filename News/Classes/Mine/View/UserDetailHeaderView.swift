@@ -94,6 +94,7 @@ class UserDetailHeaderView: UIView, NibLoadable {
                                                               width: screenWidth,
                                                               height: bottomScrollView.height))
                     tableView.register(UINib(nibName: String(describing: UserDetailDongtaiCell.self), bundle: nil), forCellReuseIdentifier: String(describing: UserDetailDongtaiCell.self))
+//                    if userDetail!.bottom_tab.count == 0 { tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 0) }
                     tableView.delegate = self
                     tableView.dataSource = self
                     // 刚开始时不能滑动
