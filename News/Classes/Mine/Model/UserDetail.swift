@@ -103,11 +103,21 @@ struct BottomTabChildren: HandyJSON {
     var value: String = ""
 }
 
+enum TopTabType:String, HandyJSONEnum {
+    case dongtai = "dongtai"                            // 动态
+    case article = "all"                                // 文章
+    case video = "video"                                // 视频
+    case wenda = "wenda"                                // 问答
+    case iesVideo = "ies_Video"                         // 小视频
+//    case matrix_atricle_list = "matrix_atricle_list"  // 发布厅
+//    case matrix_media_list = "matrix_media_list"      // 矩阵
+}
+
 struct TopTab: HandyJSON {
     var url: String = ""
     var is_defalt: Bool = false
     var show_name: String = ""
-    var type: String = ""
+    var type: TopTabType = .dongtai
 }
 
 /// (已关注用户) 取消关注

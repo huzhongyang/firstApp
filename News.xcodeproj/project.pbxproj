@@ -15,6 +15,7 @@
 		44012DEF21D21CEF0017E03E /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44012DEE21D21CEF0017E03E /* SettingModel.swift */; };
 		44012DF221D223170017E03E /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44012DF021D223170017E03E /* SettingCell.swift */; };
 		44012DF321D223170017E03E /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44012DF121D223170017E03E /* SettingCell.xib */; };
+		4404FDCA222B933B0057ABA8 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404FDC9222B933B0057ABA8 /* RefreshView.swift */; };
 		440A5FB52216D5630096B4E2 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A5FB42216D5630096B4E2 /* Calculate.swift */; };
 		440A5FB722194BC40096B4E2 /* PostVideoOrArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A5FB622194BC40096B4E2 /* PostVideoOrArticleView.swift */; };
 		440A5FB922194BDA0096B4E2 /* PostVideoOrArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440A5FB822194BDA0096B4E2 /* PostVideoOrArticleView.xib */; };
@@ -116,6 +117,7 @@
 		44012DEE21D21CEF0017E03E /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		44012DF021D223170017E03E /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		44012DF121D223170017E03E /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		4404FDC9222B933B0057ABA8 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		440A5FB42216D5630096B4E2 /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		440A5FB622194BC40096B4E2 /* PostVideoOrArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVideoOrArticleView.swift; sourceTree = "<group>"; };
 		440A5FB822194BDA0096B4E2 /* PostVideoOrArticleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostVideoOrArticleView.xib; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				44B47D5F21A300B90026E2F0 /* MyTabBar.swift */,
+				4404FDC9222B933B0057ABA8 /* RefreshView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -793,6 +797,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -819,6 +824,7 @@
 				4400914B21A52B0F008B862C /* MyTheme.swift in Sources */,
 				44B47D5B21A300AF0026E2F0 /* VideoViewController.swift in Sources */,
 				44C2EF5621E8CF9C004C3659 /* SQLiteManager.swift in Sources */,
+				4404FDCA222B933B0057ABA8 /* RefreshView.swift in Sources */,
 				44C2EF0821E872CB004C3659 /* OfflineDownloadController.swift in Sources */,
 				44012DF221D223170017E03E /* SettingCell.swift in Sources */,
 				4495D8F021A3FE1300F53F60 /* MyFirstSectionCell.swift in Sources */,

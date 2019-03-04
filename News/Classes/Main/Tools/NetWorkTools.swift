@@ -32,7 +32,7 @@ protocol NetWorkToolProtocol {
     /// 点击了关注按钮, 就会出现相关推荐数据
     static func loadRelationUserRecommend(user_id: Int, completionHandler: @escaping (_ concerns: [UserCard]) -> ())
     /// 获取用户详情的动态列表数据
-    static func loadUserDetailDongtaiList(user_id: Int, completionHandler: @escaping (_ dongtais: [UserDetailDongtai]) -> ())
+    static func loadUserDetailDongtaiList(user_id: Int, maxCursor: Int, completionHandler: @escaping (_ cursor: Int, _ dongtais: [UserDetailDongtai]) -> ())
     /// 获取用户详情的文章列表数据
     static func loadUserDetailArticleList(user_id: Int, completionHandler: @escaping (_ articles: [UserDetailDongtai]) -> ())
 }
@@ -239,17 +239,25 @@ extension NetWorkToolProtocol {
     }
     
     /// 获取用户详情的动态列表数据
-    static func loadUserDetailDongtaiList(user_id: Int, completionHandler: @escaping (_ dongtais: [UserDetailDongtai]) -> ()) {
+    /// - parameter user_id: 用户id
+    /// - parameter maxCursor: 刷新时间
+    /// - parameter completionHandler: 返回动态数据
+    /// - parameter dongtais:  动态数据的数组
+    static func loadUserDetailDongtaiList(user_id: Int, maxCursor: Int, completionHandler: @escaping (_ cursor: Int, _ dongtais: [UserDetailDongtai]) -> ()) {
         let url = BASE_URL + "/dongtai/list/v15/?"
-        let params = ["user_id": user_id]
+        let params = ["user_id": user_id,
+                      "max_cursor": maxCursor,
+                      "device_id": device_id,
+                      "iid": iid]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
-            guard response.result.isSuccess else { return }
+            guard response.result.isSuccess else { completionHandler(maxCursor, []); return }
             if let value = response.result.value {
                 let json = JSON(value)
-                guard json["message"] == "success" else { return }
+                guard json["message"] == "success" else { completionHandler(maxCursor, []); return }
                 if let data = json["data"].dictionary {
-                   if let datas = data["data"]?.arrayObject {
-                        completionHandler(datas.compactMap({
+                    let max_cursor = data["max_cursor"]!.int
+                    if let datas = data["data"]?.arrayObject {
+                        completionHandler(max_cursor!, datas.compactMap({
                             UserDetailDongtai.deserialize(from: $0 as? Dictionary)
                         }))
                     }

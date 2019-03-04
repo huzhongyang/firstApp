@@ -46,18 +46,20 @@ class UserDetailViewController: UIViewController {
         bottomViewBottom.constant = isIPhoneX ? 34 : 0
         view.layoutIfNeeded()
         
-        userId = 51025535398
-//        userId = 8
+//        userId  = 51025535398
+        userId = 8
         
         /// 获取用户详情数据
         NetWorkTool.loadUserDetail(user_id: userId) { (userDetail) in
             // 获取用户详情的动态列表数据
-            NetWorkTool.loadUserDetailDongtaiList(user_id: self.userId, completionHandler: { (dongtais) in
+            NetWorkTool.loadUserDetailDongtaiList(user_id: self.userId, maxCursor: 0, completionHandler: { (cursor, dongtais) in
                 self.scrollView.addSubview(self.headerView)
                 self.headerView.dongtais = dongtais
+                self.headerView.maxCursor = cursor
                 self.userDetail = userDetail
                 self.headerView.userDetail = userDetail
                 self.navigationBar.userDetail = userDetail
+                self.headerView.currentTopTabType = .dongtai
                 // 判断是否有 bottomView
                 if userDetail.bottom_tab.count == 0 {
                     self.headerView.height = 979 - 34

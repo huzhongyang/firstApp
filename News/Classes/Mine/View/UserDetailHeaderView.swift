@@ -9,16 +9,40 @@
 import UIKit
 import IBAnimatable
 import Kingfisher
+import SVProgressHUD
 
 class UserDetailHeaderView: UIView, NibLoadable {
     
     /// 动态数据的数组
-    var dongtais = [UserDetailDongtai]() {
+    var dongtais = [UserDetailDongtai]()
+    /// 刷新时间
+    var maxCursor = 0
+    /// 当前选中的 topTab 的索引，点击了第几个
+    var currentSelectedIndex = 0
+    /// 当前 topTab 的类型
+    var currentTopTabType: TopTabType = .dongtai {
         didSet {
-            if bottomScrollView.subviews.count > 0 {
-                let tableview = bottomScrollView.subviews[0] as! UITableView
-                tableview.rowHeight = UITableView.automaticDimension
-                tableview.reloadData()
+            let tableView = bottomScrollView.subviews[currentSelectedIndex] as! UITableView
+            switch currentTopTabType {
+            case .dongtai:
+                tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
+                    NetWorkTool.loadUserDetailDongtaiList(user_id: self!.userDetail!.user_id, maxCursor: self!.maxCursor, completionHandler: { (cursor, dongtais) in
+                        if tableView.mj_footer.isRefreshing {
+                            tableView.mj_footer.endRefreshing()
+                        }
+                        tableView.mj_footer.pullingPercent = 10.0
+                        if dongtais.count == 0 {
+                            tableView.mj_footer.endRefreshingWithNoMoreData()
+                            SVProgressHUD.showInfo(withStatus: "没有更多数据啦!")
+                            return
+                        }
+                        self!.maxCursor = cursor
+                        self?.dongtais += dongtais
+                        tableView.reloadData()
+                    })
+                })
+            default:
+                break
             }
         }
     }
@@ -204,14 +228,15 @@ class UserDetailHeaderView: UIView, NibLoadable {
 // MARK: - tableView 的代理方法
 extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y < 0 {
-            for subview in bottomScrollView.subviews {
-                let tableview = subview as! UITableView
-                tableview.isScrollEnabled = false
-            }
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print(scrollView.contentOffset.y)
+//        if scrollView.contentOffset.y < 0 {
+//            for subview in bottomScrollView.subviews {
+//                let tableview = subview as! UITableView
+//                tableview.isScrollEnabled = false
+//            }
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
