@@ -15,7 +15,20 @@ class UserDetailHeaderView: UIView, NibLoadable {
     
     /// 动态列表 数据数组
     var dongtais = [UserDetailDongtai]()
+    /// 文章列表 数据数组
+    var articles = [UserDetailDongtai]()
+    /// 视频列表 数据数组
+    var videos = [UserDetailDongtai]()
+    /// 问答列表 数据数组
+    var wendas = [Any]()
+    /// 小视频列表 数据数组
+    var iesVideos = [UserDetailDongtai]()
+    /// 记录当前的数据时候刷新过
     var isDongtaisShown = false
+    var isArticlesShown = false
+    var isVideosShown = false
+    var isWendasShown = false
+    var isIesVideosShown = false
     /// 刷新时间
     var maxCursor = 0
     /// 当前选中的 topTab 的索引，点击了第几个
@@ -35,13 +48,35 @@ class UserDetailHeaderView: UIView, NibLoadable {
                     tableView.reloadData()
                 }
             case .article:
-                print("现在刷新文章")
+                if !isArticlesShown {
+                    setFooter(tableView) { (articles) in
+                        self.articles += articles
+                        tableView.reloadData()
+                    }
+                    isArticlesShown = true
+                    tableView.mj_footer.beginRefreshing()
+                }
             case .video:
-                print("现在刷新视频")
+                if !isVideosShown {
+                    setFooter(tableView) { (videos) in
+                        self.videos += videos
+                        tableView.reloadData()
+                    }
+                    isVideosShown = true
+                    tableView.mj_footer.beginRefreshing()
+                }
             case .wenda:
                 print("现在刷新问答")
+                tableView.reloadData()
             case .iesVideo:
-                print("现在刷新小视频")
+                if !isIesVideosShown {
+                    setFooter(tableView) { (iesVideos) in
+                        self.iesVideos += iesVideos
+                        tableView.reloadData()
+                    }
+                    isIesVideosShown = true
+                    tableView.mj_footer.beginRefreshing()
+                }
             }
         }
     }
@@ -269,14 +304,14 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
         case .dongtai:
             return cellFor(tableView, at: indexPath, with: dongtais)
         case .article:
-            return cellFor(tableView, at: indexPath, with: dongtais)
+            return cellFor(tableView, at: indexPath, with: articles)
         case .video:
-            return cellFor(tableView, at: indexPath, with: dongtais)
+            return cellFor(tableView, at: indexPath, with: videos)
         case .wenda:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UserDetailDongtaiCell.self), for: indexPath) as! UserDetailDongtaiCell
             return cell
         case .iesVideo:
-            return cellFor(tableView, at: indexPath, with: dongtais)
+            return cellFor(tableView, at: indexPath, with: iesVideos)
         }
     }
     
@@ -292,13 +327,13 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
         case .dongtai:
             return cellHeight(with: dongtais[indexPath.row])
         case .article:
-            return cellHeight(with: dongtais[indexPath.row])
+            return cellHeight(with: articles[indexPath.row])
         case .video:
-            return cellHeight(with: dongtais[indexPath.row])
+            return cellHeight(with: videos[indexPath.row])
         case .wenda:
             return 0
         case .iesVideo:
-            return cellHeight(with: dongtais[indexPath.row])
+            return cellHeight(with: iesVideos[indexPath.row])
         }
     }
     
@@ -315,13 +350,13 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
         case .dongtai:
             return dongtais.count
         case .article:
-            return dongtais.count
+            return articles.count
         case .video:
-            return dongtais.count
+            return videos.count
         case .wenda:
-            return 0
+            return wendas.count
         case .iesVideo:
-            return dongtais.count
+            return iesVideos.count
         }
     }
 }
