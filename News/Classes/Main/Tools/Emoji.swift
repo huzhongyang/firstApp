@@ -35,7 +35,7 @@ struct EmojiManger {
         let attributedString = NSMutableAttributedString(string: content)
         
         // 用户名匹配规则
-        let userPatern = "@.*? "
+        let userPatern = "@.*?:"
         // 创建正则表达式对象，匹配用户名
         let userRegex = try! NSRegularExpression(pattern: userPatern, options: [])
         // 开始匹配用户名，并返回结果
@@ -46,7 +46,7 @@ struct EmojiManger {
                 let userName = (content as NSString).substring(with: result.range)
                 let attributedUserName = NSMutableAttributedString(string: userName)
                 // 设置颜色
-                attributedUserName.setAttributes([.foregroundColor: UIColor(r: 51, g: 153, b: 255)], range: NSRange(location: 0, length: attributedUserName.length))
+                attributedUserName.setAttributes([.foregroundColor: UIColor.textBlue()], range: NSRange(location: 0, length: attributedUserName.length))
                 // 替换
                 attributedString.replaceCharacters(in: result.range, with: attributedUserName)
             }

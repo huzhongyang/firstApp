@@ -30,7 +30,7 @@ class UserDetailHeaderView: UIView, NibLoadable {
                         if tableView.mj_footer.isRefreshing {
                             tableView.mj_footer.endRefreshing()
                         }
-                        tableView.mj_footer.pullingPercent = 10.0
+                        tableView.mj_footer.pullingPercent = 0.0
                         if dongtais.count == 0 {
                             tableView.mj_footer.endRefreshingWithNoMoreData()
                             SVProgressHUD.showInfo(withStatus: "没有更多数据啦!")
@@ -41,8 +41,14 @@ class UserDetailHeaderView: UIView, NibLoadable {
                         tableView.reloadData()
                     })
                 })
-            default:
-                break
+            case .article:
+                print("现在刷新文章")
+            case .video:
+                print("现在刷新视频")
+            case .wenda:
+                print("现在刷新问答")
+            case .iesVideo:
+                print("现在刷新小视频")
             }
         }
     }
@@ -272,6 +278,11 @@ extension UserDetailHeaderView {
         }) { (_) in
             self.privorButton = button
         }
+        // 获取按钮点击的索引
+        currentSelectedIndex = button.tag
+        // 通过获取到的索引取出当前按钮的类型并赋值给 currentTopTabType
+        let topTabType = userDetail!.top_tab[currentSelectedIndex]
+        currentTopTabType = topTabType.type
     }
     
     /// 发私信 按钮点击
@@ -343,8 +354,3 @@ extension UserDetailHeaderView {
         })
     }
 }
-
-
-
-
-

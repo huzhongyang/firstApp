@@ -120,4 +120,8 @@ extension UIColor {
     class func grayColor113() -> UIColor {
         return UIColor(r: 113, g: 113, b: 113)
     }
+    /// 富文本字体 蓝色
+    class func textBlue() -> UIColor {
+        return UIColor(r: 51, g: 153, b: 255)
+    }
 }
