@@ -13,8 +13,9 @@ import SVProgressHUD
 
 class UserDetailHeaderView: UIView, NibLoadable {
     
-    /// 动态数据的数组
+    /// 动态列表 数据数组
     var dongtais = [UserDetailDongtai]()
+    var isDongtaisShown = false
     /// 刷新时间
     var maxCursor = 0
     /// 当前选中的 topTab 的索引，点击了第几个
@@ -25,22 +26,14 @@ class UserDetailHeaderView: UIView, NibLoadable {
             let tableView = bottomScrollView.subviews[currentSelectedIndex] as! UITableView
             switch currentTopTabType {
             case .dongtai:
-                tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
-                    NetWorkTool.loadUserDetailDongtaiList(user_id: self!.userDetail!.user_id, maxCursor: self!.maxCursor, completionHandler: { (cursor, dongtais) in
-                        if tableView.mj_footer.isRefreshing {
-                            tableView.mj_footer.endRefreshing()
-                        }
-                        tableView.mj_footer.pullingPercent = 0.0
-                        if dongtais.count == 0 {
-                            tableView.mj_footer.endRefreshingWithNoMoreData()
-                            SVProgressHUD.showInfo(withStatus: "没有更多数据啦!")
-                            return
-                        }
-                        self!.maxCursor = cursor
-                        self?.dongtais += dongtais
+                if !isDongtaisShown {
+                    setFooter(tableView) { (dongtais) in
+                        self.dongtais += dongtais
                         tableView.reloadData()
-                    })
-                })
+                    }
+                    isDongtaisShown = true
+                    tableView.reloadData()
+                }
             case .article:
                 print("现在刷新文章")
             case .video:
@@ -51,6 +44,29 @@ class UserDetailHeaderView: UIView, NibLoadable {
                 print("现在刷新小视频")
             }
         }
+    }
+    
+    /// 设置 tableView 的刷新 footer
+    ///
+    /// - Parameters:
+    ///   - tableView: 需要刷新的 tableView
+    ///   - completionHandler: 刷新加载数据闭包回调
+    private func setFooter(_ tableView: UITableView, completionHandler:@escaping ((_ datas: [UserDetailDongtai]) -> ())) {
+        tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
+            NetWorkTool.loadUserDetailDongtaiList(user_id: self!.userDetail!.user_id, maxCursor: self!.maxCursor, completionHandler: { (cursor, dongtais) in
+                if tableView.mj_footer.isRefreshing {
+                    tableView.mj_footer.endRefreshing()
+                }
+                tableView.mj_footer.pullingPercent = 0.0
+                if dongtais.count == 0 {
+                    tableView.mj_footer.endRefreshingWithNoMoreData()
+                    SVProgressHUD.showInfo(withStatus: "没有更多数据啦!")
+                    return
+                }
+                completionHandler(dongtais)
+                self!.maxCursor = cursor
+            })
+        })
     }
     
     var userDetail: UserDetail? {
@@ -249,18 +265,64 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch currentTopTabType {
+        case .dongtai:
+            return cellFor(tableView, at: indexPath, with: dongtais)
+        case .article:
+            return cellFor(tableView, at: indexPath, with: dongtais)
+        case .video:
+            return cellFor(tableView, at: indexPath, with: dongtais)
+        case .wenda:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UserDetailDongtaiCell.self), for: indexPath) as! UserDetailDongtaiCell
+            return cell
+        case .iesVideo:
+            return cellFor(tableView, at: indexPath, with: dongtais)
+        }
+    }
+    
+    /// 设置 cell
+    private func cellFor(_ tableView: UITableView, at indexPath: IndexPath, with datas: [UserDetailDongtai]) -> UserDetailDongtaiCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UserDetailDongtaiCell.self), for: indexPath) as! UserDetailDongtaiCell
-        cell.dongtai = dongtais[indexPath.row]
+        cell.dongtai = datas[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let dongtai = dongtais[indexPath.row]
+        switch currentTopTabType {
+        case .dongtai:
+            return cellHeight(with: dongtais[indexPath.row])
+        case .article:
+            return cellHeight(with: dongtais[indexPath.row])
+        case .video:
+            return cellHeight(with: dongtais[indexPath.row])
+        case .wenda:
+            return 0
+        case .iesVideo:
+            return cellHeight(with: dongtais[indexPath.row])
+        }
+    }
+    
+    /// 返回 cell 的高度
+    ///
+    /// - Parameter dongtai: 动态内容的数据
+    /// - Returns: cell 的高度
+    private func cellHeight(with dongtai: UserDetailDongtai) -> CGFloat {
         return dongtai.cellHeight
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dongtais.count
+        switch currentTopTabType {
+        case .dongtai:
+            return dongtais.count
+        case .article:
+            return dongtais.count
+        case .video:
+            return dongtais.count
+        case .wenda:
+            return 0
+        case .iesVideo:
+            return dongtais.count
+        }
     }
 }
 
