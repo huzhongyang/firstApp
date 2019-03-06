@@ -12,29 +12,31 @@ import SwiftyJSON
 import SVProgressHUD
 
 protocol NetWorkToolProtocol {
-    // ------------------------------- 首页 home -------------------------------
-    /// 首页顶部新闻标题的数据
+    // MARK: - ------------------------------- 首页 home -------------------------------
+    // MARK: - 首页顶部新闻标题的数据
     static func loadHomeNewsTitleData(completionHandler: @escaping (_ newsTitles: [HomeNewsTitle]) -> ())
-    /// 首页顶部导航栏搜索内容数据
+    // MARK: - 首页顶部导航栏搜索内容数据
     static func loadHomeSearchSuggestInfo(completionHandler: @escaping (_ suggestInfo: String) -> ())
     
-    // ------------------------------- 我的 mine -------------------------------
-    /// 我的界面 cell 的数据
+    // MARK: - ------------------------------- 我的 mine -------------------------------
+    // MARK: - 我的界面 cell 的数据
     static func loadMyCellData(completionHandler: @escaping (_ setions: [[MyCellModel]]) -> ())
-    /// 我的关注数据
+    // MARK: - 我的关注数据
     static func loadMyConcern(completionHandler: @escaping (_ concerns: [MyConcern]) -> ())
-    /// 用户详情数据
+    // MARK: - 用户详情数据
     static func loadUserDetail(user_id: Int, completionHandler: @escaping (_ userDetail: UserDetail) -> ())
-    /// (已关注用户) 取消关注
+    // MARK: - (已关注用户) 取消关注
     static func loadRelationUnfollow(user_id: Int, completionHandler: @escaping (_ user: ConcernUser) -> ())
-    /// 点击关注按钮，关注用户
+    // MARK: - 点击关注按钮，关注用户
     static func loadRelationFollow(user_id: Int, completionHandler: @escaping (_ user: ConcernUser) -> ())
-    /// 点击了关注按钮, 就会出现相关推荐数据
+    // MARK: - 点击了关注按钮, 就会出现相关推荐数据
     static func loadRelationUserRecommend(user_id: Int, completionHandler: @escaping (_ concerns: [UserCard]) -> ())
-    /// 获取用户详情的动态列表数据
+    // MARK: - 获取用户详情的动态列表数据
     static func loadUserDetailDongtaiList(user_id: Int, maxCursor: Int, completionHandler: @escaping (_ cursor: Int, _ dongtais: [UserDetailDongtai]) -> ())
-    /// 获取用户详情的文章列表数据
+    // MARK: - 获取用户详情的文章列表数据  (未使用)
     static func loadUserDetailArticleList(user_id: Int, completionHandler: @escaping (_ articles: [UserDetailDongtai]) -> ())
+    // MARK: - 获取用户详情的问答列表数据
+    static func loadUserDetailWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ())
 }
 
 extension NetWorkToolProtocol {
@@ -287,6 +289,37 @@ extension NetWorkToolProtocol {
                     completionHandler(data.compactMap({
                         UserDetailDongtai.deserialize(from: $0 as? Dictionary)
                     }))
+                }
+            }
+        }
+    }
+    
+    /// 获取用户详情的问答列表数据
+    ///
+    /// - Parameters:
+    ///   - user_id: 用户 id
+    ///   - cursor: 刷新时间
+    ///   - completionHandler: 返回问答数剧数组
+    static func loadUserDetailWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ()) {
+        let url = BASE_URL + "/wenda/profile/wendatab/brow/?"
+        let params = ["other_id": user_id,
+                      "format": "json",
+                      "device_id": device_id,
+                      "iid": iid] as [String : Any]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else { completionHandler(cursor, []); return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["err_no"] == 0 else { completionHandler(cursor, []); return }
+                if let answerQuestions = json["answer_question"].arrayObject {
+                    if answerQuestions.count == 0 {
+                        completionHandler(cursor, [])
+                    } else {
+                        let cursor = json["cursor"].string
+                        completionHandler(cursor!, answerQuestions.compactMap({
+                            UserDetailWenda.deserialize(from: $0 as? NSDictionary)
+                        }))
+                    }
                 }
             }
         }
