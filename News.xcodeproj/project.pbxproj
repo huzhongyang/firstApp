@@ -16,6 +16,8 @@
 		44012DF221D223170017E03E /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44012DF021D223170017E03E /* SettingCell.swift */; };
 		44012DF321D223170017E03E /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44012DF121D223170017E03E /* SettingCell.xib */; };
 		4404FDCA222B933B0057ABA8 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404FDC9222B933B0057ABA8 /* RefreshView.swift */; };
+		4404FDCD222FBD2F0057ABA8 /* UserDetailWendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404FDCB222FBD2F0057ABA8 /* UserDetailWendaCell.swift */; };
+		4404FDCE222FBD2F0057ABA8 /* UserDetailWendaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4404FDCC222FBD2F0057ABA8 /* UserDetailWendaCell.xib */; };
 		440A5FB52216D5630096B4E2 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A5FB42216D5630096B4E2 /* Calculate.swift */; };
 		440A5FB722194BC40096B4E2 /* PostVideoOrArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A5FB622194BC40096B4E2 /* PostVideoOrArticleView.swift */; };
 		440A5FB922194BDA0096B4E2 /* PostVideoOrArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440A5FB822194BDA0096B4E2 /* PostVideoOrArticleView.xib */; };
@@ -118,6 +120,8 @@
 		44012DF021D223170017E03E /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		44012DF121D223170017E03E /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
 		4404FDC9222B933B0057ABA8 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
+		4404FDCB222FBD2F0057ABA8 /* UserDetailWendaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailWendaCell.swift; sourceTree = "<group>"; };
+		4404FDCC222FBD2F0057ABA8 /* UserDetailWendaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailWendaCell.xib; sourceTree = "<group>"; };
 		440A5FB42216D5630096B4E2 /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		440A5FB622194BC40096B4E2 /* PostVideoOrArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVideoOrArticleView.swift; sourceTree = "<group>"; };
 		440A5FB822194BDA0096B4E2 /* PostVideoOrArticleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostVideoOrArticleView.xib; sourceTree = "<group>"; };
@@ -505,6 +509,8 @@
 				440F150D221F9D740033FF0C /* DongtaiOriginThreadView.xib */,
 				440F150F221FBC770033FF0C /* DongtaiCollectionView.swift */,
 				440F1511221FCE8F0033FF0C /* DongtaiCollectionView.xib */,
+				4404FDCB222FBD2F0057ABA8 /* UserDetailWendaCell.swift */,
+				4404FDCC222FBD2F0057ABA8 /* UserDetailWendaCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -707,6 +713,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				440A5FB922194BDA0096B4E2 /* PostVideoOrArticleView.xib in Resources */,
+				4404FDCE222FBD2F0057ABA8 /* UserDetailWendaCell.xib in Resources */,
 				44A4B8DA22101E12002F9ECA /* RelationRecommendCell.xib in Resources */,
 				440F1512221FCE8F0033FF0C /* DongtaiCollectionView.xib in Resources */,
 				44C2EF5C21E9F9AD004C3659 /* default_theme.plist in Resources */,
@@ -825,6 +832,7 @@
 				44B47D5B21A300AF0026E2F0 /* VideoViewController.swift in Sources */,
 				44C2EF5621E8CF9C004C3659 /* SQLiteManager.swift in Sources */,
 				4404FDCA222B933B0057ABA8 /* RefreshView.swift in Sources */,
+				4404FDCD222FBD2F0057ABA8 /* UserDetailWendaCell.swift in Sources */,
 				44C2EF0821E872CB004C3659 /* OfflineDownloadController.swift in Sources */,
 				44012DF221D223170017E03E /* SettingCell.swift in Sources */,
 				4495D8F021A3FE1300F53F60 /* MyFirstSectionCell.swift in Sources */,

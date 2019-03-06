@@ -20,7 +20,7 @@ class UserDetailHeaderView: UIView, NibLoadable {
     /// 视频列表 数据数组
     var videos = [UserDetailDongtai]()
     /// 问答列表 数据数组
-    var wendas = [Any]()
+    var wendas = [UserDetailWenda]()
     /// 小视频列表 数据数组
     var iesVideos = [UserDetailDongtai]()
     /// 记录当前的数据时候刷新过
@@ -29,8 +29,9 @@ class UserDetailHeaderView: UIView, NibLoadable {
     var isVideosShown = false
     var isWendasShown = false
     var isIesVideosShown = false
-    /// 刷新时间
+    /// 刷新的指示器
     var maxCursor = 0
+    var wendaCursor = ""
     /// 当前选中的 topTab 的索引，点击了第几个
     var currentSelectedIndex = 0
     /// 当前 topTab 的类型
@@ -46,6 +47,11 @@ class UserDetailHeaderView: UIView, NibLoadable {
                     }
                     isDongtaisShown = true
                     tableView.reloadData()
+                }
+                // 加载问答的数据
+                NetWorkTool.loadUserDetailWendaList(user_id: userDetail!.user_id, cursor: wendaCursor) { (cursor, wendas) in
+                    self.wendas = wendas
+                    self.wendaCursor = cursor
                 }
             case .article:
                 if !isArticlesShown {
@@ -66,7 +72,6 @@ class UserDetailHeaderView: UIView, NibLoadable {
                     tableView.mj_footer.beginRefreshing()
                 }
             case .wenda:
-                print("现在刷新问答")
                 tableView.reloadData()
             case .iesVideo:
                 if !isIesVideosShown {
@@ -174,6 +179,15 @@ class UserDetailHeaderView: UIView, NibLoadable {
                                                               y: 0,
                                                               width: screenWidth,
                                                               height: bottomScrollView.height))
+                    /**
+                        为什么这种方法注册不行
+                    */
+//                    if topTab.type == .wenda {
+//                        tableView.register(UINib(nibName: String(describing: UserDetailWendaCell.self), bundle: nil), forCellReuseIdentifier: String(describing: UserDetailWendaCell.self))
+//                    } else {
+//                        tableView.register(UINib(nibName: String(describing: UserDetailDongtaiCell.self), bundle: nil), forCellReuseIdentifier: String(describing: UserDetailDongtaiCell.self))
+//                    }
+                    tableView.register(UINib(nibName: String(describing: UserDetailWendaCell.self), bundle: nil), forCellReuseIdentifier: String(describing: UserDetailWendaCell.self))
                     tableView.register(UINib(nibName: String(describing: UserDetailDongtaiCell.self), bundle: nil), forCellReuseIdentifier: String(describing: UserDetailDongtaiCell.self))
 //                    if userDetail!.bottom_tab.count == 0 { tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 34, right: 0) }
                     tableView.delegate = self
@@ -181,6 +195,7 @@ class UserDetailHeaderView: UIView, NibLoadable {
                     // 刚开始时不能滑动
                     tableView.isScrollEnabled = false
                     tableView.showsVerticalScrollIndicator = false
+                    tableView.separatorStyle = .none
                     tableView.tableFooterView = UIView()
                     bottomScrollView.addSubview(tableView)
                     
@@ -308,7 +323,8 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
         case .video:
             return cellFor(tableView, at: indexPath, with: videos)
         case .wenda:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UserDetailDongtaiCell.self), for: indexPath) as! UserDetailDongtaiCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: UserDetailWendaCell.self), for: indexPath) as! UserDetailWendaCell
+            cell.wenda = wendas[indexPath.row]
             return cell
         case .iesVideo:
             return cellFor(tableView, at: indexPath, with: iesVideos)
@@ -331,7 +347,8 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
         case .video:
             return cellHeight(with: videos[indexPath.row])
         case .wenda:
-            return 0
+            let wenda = wendas[indexPath.row]
+            return wenda.cellHeight
         case .iesVideo:
             return cellHeight(with: iesVideos[indexPath.row])
         }

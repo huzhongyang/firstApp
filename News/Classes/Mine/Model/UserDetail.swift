@@ -1213,10 +1213,10 @@ struct UserDetailArticleImageList: HandyJSON {
 
 struct UserDetailWenda: HandyJSON {
     /// cell 的高度
-//    var cellHeight: CGFloat {
-//        // 10 + question.titleH! + 5 + 10 + 10 + 5
-//        return 40 + question.titleH + answer.content_abstract.textHeight
-//    }
+    var cellHeight: CGFloat {
+        // 10 + question.titleH! + 5 + 10 + 10 + 5
+        return 40 + question.titleH + answer.content_abstract.textHeight
+    }
     var answer: UserDetailAnswer!
     var question: UserDetailQuestion!
 }
