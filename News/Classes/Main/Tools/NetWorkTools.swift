@@ -37,6 +37,8 @@ protocol NetWorkToolProtocol {
     static func loadUserDetailArticleList(user_id: Int, completionHandler: @escaping (_ articles: [UserDetailDongtai]) -> ())
     // MARK: - 获取用户详情的问答列表数据
     static func loadUserDetailWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ())
+    // MARK: - 获取用户详情问答列表更多数据
+    static func loadUserDetailLoadMoreWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ())
 }
 
 extension NetWorkToolProtocol {
@@ -306,6 +308,40 @@ extension NetWorkToolProtocol {
                       "format": "json",
                       "device_id": device_id,
                       "iid": iid] as [String : Any]
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            guard response.result.isSuccess else { completionHandler(cursor, []); return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["err_no"] == 0 else { completionHandler(cursor, []); return }
+                if let answerQuestions = json["answer_question"].arrayObject {
+                    if answerQuestions.count == 0 {
+                        completionHandler(cursor, [])
+                    } else {
+                        let cursor = json["cursor"].string
+                        completionHandler(cursor!, answerQuestions.compactMap({
+                            UserDetailWenda.deserialize(from: $0 as? NSDictionary)
+                        }))
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 获取用户详情问答列表更多数据
+    ///
+    /// - Parameters:
+    ///   - user_id: 用户 id
+    ///   - cursor: 刷新时间
+    ///   - completionHandler: 返回更多问答数据
+    static func loadUserDetailLoadMoreWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ()) {
+        let url = BASE_URL + "/wenda/profile/wendatab/loadmore/?"
+        let params = ["other_id": user_id,
+                      "format": "json",
+                      "curson": cursor,
+                      "count": 10,
+                      "offset": "undefined",
+                      "device_id": device_id,
+                      "iid": iid] as [String: Any]
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else { completionHandler(cursor, []); return }
             if let value = response.result.value {
