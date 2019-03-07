@@ -47,7 +47,7 @@ class UserDetailViewController: UIViewController {
         view.layoutIfNeeded()
         
 //        userId  = 51025535398
-        userId = 8
+//        userId = 8
         
         /// 获取用户详情数据
         NetWorkTool.loadUserDetail(user_id: userId) { (userDetail) in

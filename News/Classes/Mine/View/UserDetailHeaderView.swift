@@ -48,11 +48,6 @@ class UserDetailHeaderView: UIView, NibLoadable {
                     isDongtaisShown = true
                     tableView.reloadData()
                 }
-                // 加载问答的数据
-                NetWorkTool.loadUserDetailWendaList(user_id: userDetail!.user_id, cursor: wendaCursor) { (cursor, wendas) in
-                    self.wendas = wendas
-                    self.wendaCursor = cursor
-                }
             case .article:
                 if !isArticlesShown {
                     setFooter(tableView) { (articles) in
@@ -72,7 +67,37 @@ class UserDetailHeaderView: UIView, NibLoadable {
                     tableView.mj_footer.beginRefreshing()
                 }
             case .wenda:
-                tableView.reloadData()
+                if !isWendasShown {
+                    // 加载问答的数据
+                    NetWorkTool.loadUserDetailWendaList(user_id: userDetail!.user_id, cursor: wendaCursor, completionHandler: {(cursor, wendas) in
+                        self.wendas = wendas
+                        self.wendaCursor = cursor
+                        tableView.mj_footer.beginRefreshing()
+                    })
+                    isWendasShown = true
+                    tableView.reloadData()
+                }
+                tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
+                    /*
+                     这里的加载 wenda 更多数据的接口拿到的数据 和 加载 wenda 数据的接口拿到的数据是一样的？？？？？？
+                     并没有获得新的数据
+                     **/
+                    // 加载问答的更多数据
+                    NetWorkTool.loadUserDetailLoadMoreWendaList(user_id: self!.userDetail!.user_id, cursor: self!.wendaCursor, completionHandler: {(cursor, wendas) in
+                        self!.wendaCursor = cursor
+                        if tableView.mj_footer.isRefreshing {
+                            tableView.mj_footer.endRefreshing()
+                        }
+                        tableView.mj_footer.pullingPercent = 0.0
+                        if wendas.count == 0 {
+                            tableView.mj_footer.endRefreshingWithNoMoreData()
+                            SVProgressHUD.showInfo(withStatus: "没有更多数据啦!")
+                            return
+                        }
+                        self!.wendas += wendas
+                        tableView.reloadData()
+                    })
+                })
             case .iesVideo:
                 if !isIesVideosShown {
                     setFooter(tableView) { (iesVideos) in
@@ -299,16 +324,6 @@ class UserDetailHeaderView: UIView, NibLoadable {
 
 // MARK: - tableView 的代理方法
 extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset.y)
-//        if scrollView.contentOffset.y < 0 {
-//            for subview in bottomScrollView.subviews {
-//                let tableview = subview as! UITableView
-//                tableview.isScrollEnabled = false
-//            }
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
