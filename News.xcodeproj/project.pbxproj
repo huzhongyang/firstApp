@@ -18,6 +18,8 @@
 		4404FDCA222B933B0057ABA8 /* RefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404FDC9222B933B0057ABA8 /* RefreshView.swift */; };
 		4404FDCD222FBD2F0057ABA8 /* UserDetailWendaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404FDCB222FBD2F0057ABA8 /* UserDetailWendaCell.swift */; };
 		4404FDCE222FBD2F0057ABA8 /* UserDetailWendaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4404FDCC222FBD2F0057ABA8 /* UserDetailWendaCell.xib */; };
+		4404FDD12234D3560057ABA8 /* DongtaiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404FDCF2234D3560057ABA8 /* DongtaiDetailViewController.swift */; };
+		4404FDD22234D3560057ABA8 /* DongtaiDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4404FDD02234D3560057ABA8 /* DongtaiDetailViewController.xib */; };
 		440A5FB52216D5630096B4E2 /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A5FB42216D5630096B4E2 /* Calculate.swift */; };
 		440A5FB722194BC40096B4E2 /* PostVideoOrArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440A5FB622194BC40096B4E2 /* PostVideoOrArticleView.swift */; };
 		440A5FB922194BDA0096B4E2 /* PostVideoOrArticleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440A5FB822194BDA0096B4E2 /* PostVideoOrArticleView.xib */; };
@@ -122,6 +124,8 @@
 		4404FDC9222B933B0057ABA8 /* RefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshView.swift; sourceTree = "<group>"; };
 		4404FDCB222FBD2F0057ABA8 /* UserDetailWendaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailWendaCell.swift; sourceTree = "<group>"; };
 		4404FDCC222FBD2F0057ABA8 /* UserDetailWendaCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailWendaCell.xib; sourceTree = "<group>"; };
+		4404FDCF2234D3560057ABA8 /* DongtaiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongtaiDetailViewController.swift; sourceTree = "<group>"; };
+		4404FDD02234D3560057ABA8 /* DongtaiDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiDetailViewController.xib; sourceTree = "<group>"; };
 		440A5FB42216D5630096B4E2 /* Calculate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
 		440A5FB622194BC40096B4E2 /* PostVideoOrArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVideoOrArticleView.swift; sourceTree = "<group>"; };
 		440A5FB822194BDA0096B4E2 /* PostVideoOrArticleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostVideoOrArticleView.xib; sourceTree = "<group>"; };
@@ -460,6 +464,8 @@
 				442D68992209DCCB00BE1558 /* MyPresentationController.swift */,
 				44526A0A2226D4E0009A98CB /* PreviewDongtaiLargeImageController.swift */,
 				44526A0B2226D4E0009A98CB /* PreviewDongtaiLargeImageController.xib */,
+				4404FDCF2234D3560057ABA8 /* DongtaiDetailViewController.swift */,
+				4404FDD02234D3560057ABA8 /* DongtaiDetailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -721,6 +727,7 @@
 				44B47D1E21A2FFBA0026E2F0 /* LaunchScreen.storyboard in Resources */,
 				4495D90721A4393800F53F60 /* MyConcernCell.xib in Resources */,
 				44C2EF6021EA3CF0004C3659 /* UserDetailViewController.xib in Resources */,
+				4404FDD22234D3560057ABA8 /* DongtaiDetailViewController.xib in Resources */,
 				44012DF321D223170017E03E /* SettingCell.xib in Resources */,
 				4400915521A55782008B862C /* NoLoginHeaderView.xib in Resources */,
 				44A4B8D2220FA99A002F9ECA /* NavigationBarView.xib in Resources */,
@@ -853,6 +860,7 @@
 				4495D90621A4393800F53F60 /* MyConcernCell.swift in Sources */,
 				44A4B8E322150E36002F9ECA /* UserDetailDongtaiCell.swift in Sources */,
 				44B47D6121A300BA0026E2F0 /* MyNavigationController.swift in Sources */,
+				4404FDD12234D3560057ABA8 /* DongtaiDetailViewController.swift in Sources */,
 				44B47D5D21A300AF0026E2F0 /* MineViewController.swift in Sources */,
 				44C2EF0E21E87A1B004C3659 /* HomeNewsTitle.swift in Sources */,
 				44BD935621EF63A700954D8C /* NavigationBarView.swift in Sources */,

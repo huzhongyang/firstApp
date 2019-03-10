@@ -47,7 +47,7 @@ class UserDetailViewController: UIViewController {
         view.layoutIfNeeded()
         
 //        userId  = 51025535398
-//        userId = 8
+        userId = 8
         
         /// 获取用户详情数据
         NetWorkTool.loadUserDetail(user_id: userId) { (userDetail) in
@@ -73,6 +73,13 @@ class UserDetailViewController: UIViewController {
                 }
                 self.scrollView.contentSize = CGSize(width: screenWidth, height: self.headerView.height)
             })
+        }
+        
+        // 点击了 cell
+        headerView.didSelectCellWithDongtai = { [weak self] (dongtai) in
+            let dongtaiDetailVC = DongtaiDetailViewController()
+            dongtaiDetailVC.dongtai = dongtai
+            self?.navigationController?.pushViewController(dongtaiDetailVC, animated: true)
         }
     }
     
@@ -165,6 +172,7 @@ extension UserDetailViewController: UIScrollViewDelegate {
 
 /// bottomTab 底部按钮
 extension UserDetailViewController: UserDetailBottomViewDelegate {
+    
     // bottomTab 底部按钮点击
     func bottomView(clicked button: UIButton, bottomTab: BottomTab) {
         let bottomPushVC = UserDetailBottomPushController()

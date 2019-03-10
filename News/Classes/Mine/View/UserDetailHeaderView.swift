@@ -13,6 +13,9 @@ import SVProgressHUD
 
 class UserDetailHeaderView: UIView, NibLoadable {
     
+    /// 点击了 cell
+    var didSelectCellWithDongtai: ((_ dongtai: UserDetailDongtai)->())?
+    
     /// 动态列表 数据数组
     var dongtais = [UserDetailDongtai]()
     /// 文章列表 数据数组
@@ -327,6 +330,19 @@ extension UserDetailHeaderView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch currentTopTabType {
+        case .dongtai:
+            didSelectCellWithDongtai?(dongtais[indexPath.row])
+        case .article:
+            didSelectCellWithDongtai?(articles[indexPath.row])
+        case .video:
+            didSelectCellWithDongtai?(videos[indexPath.row])
+        case .iesVideo:
+            didSelectCellWithDongtai?(iesVideos[indexPath.row])
+        case .wenda:
+            print("点击了问答")
+//            didSelectCellWithDongtai?(wendas[indexPath.row])
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
