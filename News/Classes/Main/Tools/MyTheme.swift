@@ -37,17 +37,16 @@ enum MyTheme: Int {
 }
 
 struct MyThemStyle {
-    /// 设置日间导航栏主题
-    static func setDayNavigationStyle(_ viewController: UIViewController) {
-        viewController.navigationController?.navigationBar.barStyle = .default
-        viewController.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white"), for: .default)
-        viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
-    }
-    
-    /// 设置夜间导航栏主题
-    static func setNightNavigationStyle(_ viewController: UIViewController) {
-        viewController.navigationController?.navigationBar.barStyle = .black
-        viewController.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white_night"), for: .default)
-        viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.grayColor113()]
+    /// 设置导航栏样式 (日间/夜间)
+    static func setupNavigationBarStyle(_ viewController: UIViewController, _ isNight: Bool) {
+        if isNight { // 夜间
+            viewController.navigationController?.navigationBar.barStyle = .black
+            viewController.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white_night"), for: .default)
+            viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.grayColor113()]
+        } else { // 日间
+            viewController.navigationController?.navigationBar.barStyle = .default
+            viewController.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "navigation_background_white"), for: .default)
+            viewController.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+        }
     }
 }

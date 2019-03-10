@@ -29,14 +29,10 @@ extension WeitoutiaoViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: Notification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
         
         view.theme_backgroundColor = "colors.cellBackgroundColor"
-        if UserDefaults.standard.bool(forKey: isNight) { // 夜间
-            MyThemStyle.setNightNavigationStyle(self)
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "follow_title_profile_night_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        } else { // 日间
-            MyThemStyle.setDayNavigationStyle(self)
-            // 导航栏右上角按钮
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        }
+        // 设置导航栏样式
+        MyThemStyle.setupNavigationBarStyle(self, UserDefaults.standard.bool(forKey: isNight))
+        // 添加导航栏右侧按钮
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: UserDefaults.standard.bool(forKey: isNight) ? "follow_title_profile_night_18x18_" : "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
     }
     
     /// 导航栏右上角按钮点击
@@ -46,10 +42,8 @@ extension WeitoutiaoViewController {
     
     @objc private func receiveDayOrNightButtonClicked(notification: Notification) {
         let selected = notification.object as! Bool
-        if selected { // 设置为夜间
-            MyThemStyle.setNightNavigationStyle(self)
-        } else { // 设置为日间
-            MyThemStyle.setDayNavigationStyle(self)
-        }
+        MyThemStyle.setupNavigationBarStyle(self, selected)
+        // 添加导航栏右侧按钮
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: selected ? "follow_title_profile_night_18x18_" : "follow_title_profile_18x18_"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
     }
 }
