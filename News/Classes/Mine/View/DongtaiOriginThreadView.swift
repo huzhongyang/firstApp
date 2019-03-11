@@ -14,12 +14,14 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
     
     var originThread: DongtaiOriginThread? {
         didSet {
-            contentLabelHeight.constant = originThread!.contentH!
             let mutableAttributedString = NSMutableAttributedString(string: "@\(originThread!.user.screen_name)", attributes: [.foregroundColor: UIColor.textBlue()])
             mutableAttributedString.append(emojiManager.showEmoji(content: originThread!.content, font: contentLabel.font))
             contentLabel.attributedText = mutableAttributedString
+            contentLabelHeight.constant = originThread!.contentH!
+            collectionView.isDongtaiDetail = originThread!.isDongtaiDetail
             collectionView.thumbImageList = originThread!.thumb_image_list
             collectionView.largeImages = originThread!.large_image_list
+            collectionViewWidth.constant = originThread!.collectionViewW
             layoutIfNeeded()
         }
     }
@@ -31,6 +33,7 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
     /// 引用内容的 collectionView
     @IBOutlet weak var collectionView: DongtaiCollectionView!
     
+    @IBOutlet weak var collectionViewWidth: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -38,5 +41,6 @@ class DongtaiOriginThreadView: UIView, NibLoadable {
     override func layoutSubviews() {
         super.layoutSubviews()
         height = originThread!.height!
+        width = screenWidth
     }
 }

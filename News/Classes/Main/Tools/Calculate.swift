@@ -9,7 +9,9 @@
 import UIKit
 
 protocol Calculatable {
-    /// 计算高度
+    /// 计算详情里 collectionViewCell 的大小
+    static func detailCollectionViewCellSize(_ thumbImages: [ThumbImage]) -> CGSize
+    /// 计算详情里 collectionView 高度
     static func detailCollectionViewHieght(_ thumbImages: [ThumbImage]) -> CGFloat
     /// 计算 collectionView 宽度
     static func collectionViewWidth(_ count: Int) -> CGFloat
@@ -25,7 +27,22 @@ protocol Calculatable {
 
 extension Calculatable {
     
-    /// 计算高度
+    /// 计算详情里 collectionViewCell 的大小
+    static func detailCollectionViewCellSize(_ thumbImages: [ThumbImage]) -> CGSize {
+        switch thumbImages.count {
+        case 1:
+            let thumbImage = thumbImages.first!
+            let height = (screenWidth - 30) * thumbImage.height / thumbImage.width
+            return CGSize(width: (screenWidth - 30), height: height)
+        case 2, 4:
+            let image2W = (screenWidth - 35) * 0.5
+            return CGSize(width: image2W, height: image2W)
+        case 3, 5...9: return CGSize(width: image3Width, height: image3Width)
+        default: return .zero
+        }
+    }
+    
+    /// 计算详情里 collectionView 高度
     static func detailCollectionViewHieght(_ thumbImages: [ThumbImage]) -> CGFloat {
         switch thumbImages.count {
         case 1:

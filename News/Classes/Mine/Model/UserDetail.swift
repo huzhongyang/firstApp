@@ -221,19 +221,19 @@ struct RichContent {
 // MARK: - 用户详情 动态模型
 struct UserDetailDongtai: HandyJSON {
     /// header view 的高度
-//    var detailHeaderHeight: CGFloat {
-//        // 60 + contentHeight + middleViewHeight + 25 + 5 + 40
-//        var height: CGFloat = 135 + detailContentH
-//        switch item_type {
-//        case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo:   // 发布了视频和文章,提出了问题,回答了问题
-//            height += 60
-//        case .postContent, .postSmallVideo:   // 发布了文字内容
-//            height += collectionViewH
-//        case .commentOrQuoteContent, .commentOrQuoteOthers:   // 引用或者评论别人的内容
-//            height += origin_thread.detailHeight
-//        }
-//        return height
-//    }
+    var detailHeaderHeight: CGFloat {
+        // 60 + contentHeight + middleViewHeight + 25 + 5 + 40
+        var height: CGFloat = 135 + detailContentH
+        switch item_type {
+        case .postVideoOrArticle, .postVideo, .answerQuestion, .proposeQuestion, .forwardArticle, .postContentAndVideo:   // 发布了视频和文章,提出了问题,回答了问题
+            height += 60
+        case .postContent, .postSmallVideo:   // 发布了文字内容
+            height += collectionViewH
+        case .commentOrQuoteContent, .commentOrQuoteOthers:   // 引用或者评论别人的内容
+            height += origin_thread.detailHeight
+        }
+        return height
+    }
     
     /// cell 的高度
     var cellHeight: CGFloat {
@@ -255,7 +255,7 @@ struct UserDetailDongtai: HandyJSON {
     var isDongtaiDetail = false
     
     /// 详情 collectionView 高度
-    var detailConllectionViewH : CGFloat {
+    var detailCollectionViewH : CGFloat {
         return Calculate.detailCollectionViewHieght(thumb_image_list)
     }
 
@@ -672,22 +672,28 @@ struct DongtaiPosition: HandyJSON {
 struct DongtaiOriginThread: HandyJSON {
     /// cell 的高度
 //    var height: CGFloat { return 20 + contentH + ((delete || !show_origin) ? 0 : collectionViewH) }
-//    var detailHeight: CGFloat { return 20 + contentH + ((delete || !show_origin) ? 0 : detailCollectionViewH) }
+    var detailHeight: CGFloat {
+        return 20 + contentH! + ((delete || !show_origin) ? 0 : detailCollectionViewH)
+    }
     var height: CGFloat? {
-        return 20 + contentH! + collectionViewH
+        return 20 + contentH! + (isDongtaiDetail ? detailCollectionViewH : collectionViewH)
     }
     
     var content: String = ""
-//    var contentH: CGFloat? {
-//        if !show_origin || delete { return 40 }
-//        let nameAndContent = (user.screen_name == "" ? "" : "\(user.screen_name):") + content
-//        let height = Calculate.textHeight(text: nameAndContent, fontSize: 17, width: screenWidth - 30.0) + 5.0
-//        return height >= 120 ? 120 : height
-//    }
     var contentH: CGFloat? {
-        let height = Calculate.textHeight(text: content, fontSize: 17, width: screenWidth - 30.0)
-        return height >= 110 ? 110 : height
+        if !show_origin || delete { return 40 }
+        let nameAndContent = (user.screen_name == "" ? "" : "\(user.screen_name):") + content
+        let height = Calculate.textHeight(text: nameAndContent, fontSize: 17, width: screenWidth - 30.0) + 5.0
+        if isDongtaiDetail {
+            return height
+        } else {
+            return height >= 120 ? 120 : height
+        }
     }
+//    var contentH: CGFloat? {
+//        let height = Calculate.textHeight(text: content, fontSize: 17, width: screenWidth - 30.0)
+//        return height >= 110 ? 110 : height
+//    }
 //    var attributedContent: NSAttributedString {
 //        let emojimanager = EmojiManager()
 //        let mutableAtttributedString = NSMutableAttributedString(string: (user.screen_name == "" ? "" : "\(user.screen_name):"), attributes: [.foregroundColor: UIColor.blueFontColor()])

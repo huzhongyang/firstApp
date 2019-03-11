@@ -10,8 +10,11 @@ import UIKit
 
 class DongtaiCollectionView: UICollectionView, NibLoadable {
     
+    /// 是否发布了小视频
     var isPostSmallVideo = false
-
+    /// 是否是动态详情
+    var isDongtaiDetail = false
+    
     var thumbImageList = [ThumbImage]() {
         didSet {
             reloadData()
@@ -52,7 +55,7 @@ extension DongtaiCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return Calculate.collectionViewCellSize(thumbImageList.count)
+        return isDongtaiDetail ? Calculate.detailCollectionViewCellSize(thumbImageList) : Calculate.collectionViewCellSize(thumbImageList.count)
     }
 }
 

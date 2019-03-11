@@ -39,6 +39,10 @@ protocol NetWorkToolProtocol {
     static func loadUserDetailWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ())
     // MARK: - 获取用户详情问答列表更多数据
     static func loadUserDetailLoadMoreWendaList(user_id: Int, cursor: String, completionHandler: @escaping (_ cursor: String, _ wendas: [UserDetailWenda]) -> ())
+    // MARK: - 获取用户详情一般的详情的评论数据
+    static func loadUserDetailNormalDongtaiComments(groupId: Int, offset: Int, count: Int, completionHandler: @escaping (_ comments: [DongtaiComment]) -> ())
+    // MARK: - 获取用户详情引用类型的详情的评论数据
+    static func loadUserDetailQuoteDongtaiComments(id: Int, offset: Int, completionHandler: @escaping (_ comments: [DongtaiComment]) -> ())
 }
 
 extension NetWorkToolProtocol {
@@ -355,6 +359,68 @@ extension NetWorkToolProtocol {
                         completionHandler(cursor!, answerQuestions.compactMap({
                             UserDetailWenda.deserialize(from: $0 as? NSDictionary)
                         }))
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 获取用户详情一般的详情的评论数据
+    /// item_type: postContent(200),postVideo(150),postVideoOrArticle(151)
+    /// - parameter forumId: 用户id
+    /// - parameter groupId: thread_id
+    /// - parameter offset: 偏移
+    /// - parameter completionHandler: 返回评论数据
+    /// - parameter comments: 评论数据
+    static func loadUserDetailNormalDongtaiComments(groupId: Int, offset: Int, count: Int, completionHandler: @escaping (_ comments: [DongtaiComment]) -> ()) {
+        
+        let url = BASE_URL + "/article/v2/tab_comments/"
+        let params = ["forum_id": "",
+                      "group_id": groupId,
+                      "count": count,
+                      "offset": offset,
+                      "device_id": device_id,
+                      "iid": iid] as [String : Any]
+        
+        Alamofire.request(url, method: .post, parameters: params).responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { completionHandler([]); return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"] == "success" else { completionHandler([]); return }
+                if let datas = json["data"].arrayObject {
+                    completionHandler(datas.compactMap({
+                        return DongtaiComment.deserialize(from: ($0 as! [String: Any])["comment"] as? Dictionary)
+                    }))
+                }
+            }
+        }
+    }
+    
+    /// 获取用户详情引用类型的详情的评论数据
+    /// item_type: 109,212,110
+    /// - parameter id: 详情的 id
+    /// - parameter offset: 偏移
+    /// - parameter completionHandler: 返回评论数据
+    /// - parameter comments: 评论数据
+    static func loadUserDetailQuoteDongtaiComments(id: Int, offset: Int, completionHandler: @escaping (_ comments: [DongtaiComment]) -> ()) {
+        
+        let url = BASE_URL + "/2/comment/v1/reply_list/?"
+        let params = ["id": id,
+                      "count": 20,
+                      "offset": offset,
+                      "device_id": device_id,
+                      "iid": iid] as [String : Any]
+        
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { completionHandler([]); return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"] == "success" else { completionHandler([]); return }
+                if let data = json["data"].dictionary {
+                    if let datas = data["data"]!.arrayObject {
+                        completionHandler(datas.compactMap({ DongtaiComment.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }
