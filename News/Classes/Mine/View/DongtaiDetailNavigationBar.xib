@@ -27,21 +27,25 @@
                     </userDefinedRuntimeAttributes>
                 </button>
                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all_v_avatar_18x18_" translatesAutoresizingMaskIntoConstraints="NO" id="gEC-xj-cW5">
-                    <rect key="frame" x="15" y="22" width="15" height="15"/>
+                    <rect key="frame" x="18" y="25" width="12" height="12"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="15" id="69E-Gw-FiP"/>
-                        <constraint firstAttribute="width" constant="15" id="djG-qO-qRH"/>
+                        <constraint firstAttribute="height" constant="12" id="69E-Gw-FiP"/>
+                        <constraint firstAttribute="width" constant="12" id="djG-qO-qRH"/>
                     </constraints>
                 </imageView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ayx-ik-3wQ">
                     <rect key="frame" x="35" y="0.0" width="121.5" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6l2-Oe-Iyz">
                     <rect key="frame" x="35" y="22" width="121.5" height="22"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <state key="normal" title="Button"/>
+                    <state key="normal">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微头条" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bsc-Ec-YyV">
                     <rect key="frame" x="161.5" y="11.5" width="52" height="21"/>

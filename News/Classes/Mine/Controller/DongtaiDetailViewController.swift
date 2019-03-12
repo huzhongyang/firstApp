@@ -59,6 +59,12 @@ extension DongtaiDetailViewController {
         navigationBar.vImageView.isHidden = (scrollView.contentOffset.y <= 50)
     }
     
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DongtaiCommentCell.self), for: indexPath) as! DongtaiCommentCell
+        cell.comment = comments[indexPath.row]
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
@@ -81,12 +87,21 @@ extension DongtaiDetailViewController {
         // 注册 日间/夜间 按钮，点击通知
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: Notification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
         
+        tableView.register(UINib(nibName: String(describing: DongtaiCommentCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DongtaiCommentCell.self))
+        
         switch dongtai.item_type {
-        case .commentOrQuoteOthers, .commentOrQuoteContent:
+        case .commentOrQuoteOthers, .commentOrQuoteContent, .forwardArticle:
+            // 获取用户详情引用类型的详情的评论数据 item_type: 109,212,110
             NetWorkTool.loadUserDetailQuoteDongtaiComments(id: dongtai.id, offset: 0) { (comments) in
                 self.comments = comments
                 self.tableView.reloadData()
             }
+        case .postContent:
+            // 获取用户详情一般的详情的评论数据
+            NetWorkTool.loadUserDetailNormalDongtaiComments(groupId: Int(self.dongtai.id_str)!, offset: self.comments.count, count: 20, completionHandler: { (comments) in
+                self.comments = comments
+                self.tableView.reloadData()
+            })
         default:
             break
         }

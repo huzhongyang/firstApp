@@ -93,6 +93,8 @@
 		44CC10012209285600A32811 /* UserDetailBottomPushController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC10002209285600A32811 /* UserDetailBottomPushController.swift */; };
 		44CC100322094CB700A32811 /* UserDetailBottomPopController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CC100222094CB700A32811 /* UserDetailBottomPopController.swift */; };
 		44CC100522094CE300A32811 /* UserDetailBottomPopController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CC100422094CE300A32811 /* UserDetailBottomPopController.storyboard */; };
+		44ECD8CB2236BB9600C2735D /* DongtaiCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD8C92236BB9600C2735D /* DongtaiCommentCell.swift */; };
+		44ECD8CC2236BB9600C2735D /* DongtaiCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44ECD8CA2236BB9600C2735D /* DongtaiCommentCell.xib */; };
 		473BAD07639897C2BA34D181 /* Pods_News.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C5898739FED5E41D968D218 /* Pods_News.framework */; };
 /* End PBXBuildFile section */
 
@@ -209,6 +211,8 @@
 		44CC10002209285600A32811 /* UserDetailBottomPushController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailBottomPushController.swift; sourceTree = "<group>"; };
 		44CC100222094CB700A32811 /* UserDetailBottomPopController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailBottomPopController.swift; sourceTree = "<group>"; };
 		44CC100422094CE300A32811 /* UserDetailBottomPopController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetailBottomPopController.storyboard; sourceTree = "<group>"; };
+		44ECD8C92236BB9600C2735D /* DongtaiCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongtaiCommentCell.swift; sourceTree = "<group>"; };
+		44ECD8CA2236BB9600C2735D /* DongtaiCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiCommentCell.xib; sourceTree = "<group>"; };
 		9C5898739FED5E41D968D218 /* Pods_News.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_News.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF3793C714747D274D06746 /* Pods_NewsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -529,6 +533,8 @@
 				4404FDD5223502490057ABA8 /* DongtaiDetailNavigationBar.xib */,
 				4404FDD7223538700057ABA8 /* DongtaiDetailHeaderView.swift */,
 				4404FDD92235387D0057ABA8 /* DongtaiDetailHeaderView.xib */,
+				44ECD8C92236BB9600C2735D /* DongtaiCommentCell.swift */,
+				44ECD8CA2236BB9600C2735D /* DongtaiCommentCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,6 +736,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44ECD8CC2236BB9600C2735D /* DongtaiCommentCell.xib in Resources */,
 				440A5FB922194BDA0096B4E2 /* PostVideoOrArticleView.xib in Resources */,
 				4404FDCE222FBD2F0057ABA8 /* UserDetailWendaCell.xib in Resources */,
 				44A4B8DA22101E12002F9ECA /* RelationRecommendCell.xib in Resources */,
@@ -863,6 +870,7 @@
 				44A4B8D422100419002F9ECA /* RelationRecommendView.swift in Sources */,
 				440F150C221F9CFC0033FF0C /* DongtaiOriginThreadView.swift in Sources */,
 				44A4B8DC22111CBB002F9ECA /* Foundation+Extension.swift in Sources */,
+				44ECD8CB2236BB9600C2735D /* DongtaiCommentCell.swift in Sources */,
 				44BD935421EF254000954D8C /* UserDetailBottomView.swift in Sources */,
 				44012DEF21D21CEF0017E03E /* SettingModel.swift in Sources */,
 				4486E66F22294D750050DD04 /* Emoji.swift in Sources */,
