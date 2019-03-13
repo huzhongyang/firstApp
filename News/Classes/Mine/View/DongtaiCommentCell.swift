@@ -27,8 +27,7 @@ class DongtaiCommentCell: UITableViewCell {
                 vImageView.isHidden = !comment.user.user_verified
                 if comment.user.user_auth_info.auth_info != "" { authInfoLabel.text = comment.user.user_auth_info.auth_info }
             }
-            contentLabel.text = comment.content
-            contentLabel.attributedText = EmojiManger().showEmoji(content: comment.content, font: contentLabel.font)
+            contentLabel.attributedText = comment.attributedContent
             timeLabel.text = comment.createTime + "· "
             if comment.reply_count != 0 { replayButton.theme_backgroundColor = "colors.grayColor240" }
             replayButton.setTitle(comment.reply_count == 0 ? "回复" : "\(comment.reply_count)回复", for: .normal)

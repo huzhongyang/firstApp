@@ -295,15 +295,15 @@ struct UserDetailDongtai: HandyJSON {
     }
     
     /// 富文本内容高度
-//    var attributedCntentHeight: CGFloat {
-//        let height = Calculate.attributedTextHeight(text: attributedContent, width: screenWidth - 30.0)
-//        return height >= 110.0 ? 110.0 : height
-//    }
+    var attributedCntentHeight: CGFloat {
+        let height = Calculate.attributedTextHeight(text: attributedContent, width: screenWidth - 30.0)
+        return height >= 110.0 ? 110.0 : height
+    }
     
-//    var attributedContent: NSAttributedString {
-//        let emojimanager = EmojiManager()
-//        return emojimanager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17))
-//    }
+    var attributedContent: NSAttributedString {
+        let emojimanager = EmojiManger()
+        return emojimanager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17))
+    }
 
     
     var cell_type: Int = 0
@@ -698,12 +698,12 @@ struct DongtaiOriginThread: HandyJSON {
 //        let height = Calculate.textHeight(text: content, fontSize: 17, width: screenWidth - 30.0)
 //        return height >= 110 ? 110 : height
 //    }
-//    var attributedContent: NSAttributedString {
-//        let emojimanager = EmojiManager()
-//        let mutableAtttributedString = NSMutableAttributedString(string: (user.screen_name == "" ? "" : "\(user.screen_name):"), attributes: [.foregroundColor: UIColor.blueFontColor()])
-//        mutableAtttributedString.append(emojimanager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17)))
-//        return mutableAtttributedString
-//    }
+    var attributedContent: NSAttributedString {
+        let emojimanager = EmojiManger()
+        let mutableAtttributedString = NSMutableAttributedString(string: (user.screen_name == "" ? "" : "\(user.screen_name):"), attributes: [.foregroundColor: UIColor.blueFontColor()])
+        mutableAtttributedString.append(emojimanager.showEmoji(content: content, font: UIFont.systemFont(ofSize: 17)))
+        return mutableAtttributedString
+    }
 
     var isDongtaiDetail = false
 
@@ -858,10 +858,10 @@ struct DongtaiComment: HandyJSON {
     var user_digg = false
     var user_profile_image_url: String = ""
     var text: String = ""
-//    var attributedContent: NSAttributedString {
-//        let emojimanager = EmojiManager()
-//        return emojimanager.showEmoji(content: text, font: UIFont.systemFont(ofSize: 17))
-//    }
+    var attributedContent: NSAttributedString {
+        let emojimanager = EmojiManger()
+        return emojimanager.showEmoji(content: text, font: UIFont.systemFont(ofSize: 17))
+    }
     
     var content = ""
     

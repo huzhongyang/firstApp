@@ -10,13 +10,9 @@ import UIKit
 
 class DongtaiOriginThreadView: UIView, NibLoadable {
 
-    let emojiManager = EmojiManger()
-    
     var originThread: DongtaiOriginThread? {
         didSet {
-            let mutableAttributedString = NSMutableAttributedString(string: "@\(originThread!.user.screen_name)", attributes: [.foregroundColor: UIColor.textBlue()])
-            mutableAttributedString.append(emojiManager.showEmoji(content: originThread!.content, font: contentLabel.font))
-            contentLabel.attributedText = mutableAttributedString
+            contentLabel.attributedText = originThread!.attributedContent
             contentLabelHeight.constant = originThread!.contentH!
             collectionView.isDongtaiDetail = originThread!.isDongtaiDetail
             collectionView.thumbImageList = originThread!.thumb_image_list

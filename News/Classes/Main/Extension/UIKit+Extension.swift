@@ -179,9 +179,15 @@ extension UIColor {
     class func grayColor113() -> UIColor {
         return UIColor(r: 113, g: 113, b: 113)
     }
+    
     /// 富文本字体 蓝色
     class func textBlue() -> UIColor {
         return UIColor(r: 51, g: 153, b: 255)
+    }
+    
+    /// 字体蓝色
+    class func blueFontColor() -> UIColor {
+        return UIColor(r: 72, g: 100, b: 149)
     }
     
     /// 背景灰色 232
@@ -192,5 +198,10 @@ extension UIColor {
     /// 背景红色
     class func globalRedColor() -> UIColor {
         return UIColor(r: 196, g: 73, b: 67)
+    }
+    
+    /// 灰色 210
+    class func grayColor210() -> UIColor {
+        return UIColor(r: 210, g: 210, b: 210)
     }
 }

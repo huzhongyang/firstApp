@@ -69,6 +69,12 @@ struct EmojiManger {
                 let emojiName = (content as NSString).substring(with: result.range)
                 // 取出对应的 emoji 模型
                 let emoji = emojis.filter({ $0.name == emojiName }).first!
+//                //防止找不到名字所对应的表情
+//                guard let emoji = emojis.filter({
+//                    $0.name == emojiName
+//                }).first else {
+//                    return attributedString
+//                }
                 // 设置图片
                 let attachment = NSTextAttachment()
                 attachment.image = UIImage(named: emoji.png)

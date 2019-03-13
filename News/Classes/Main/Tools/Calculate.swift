@@ -23,6 +23,8 @@ protocol Calculatable {
     static func textHeight(text: String, fontSize: CGFloat, width: CGFloat) -> CGFloat
     /// 计算文本的宽度
     static func textWidth(text: String, fontSize: CGFloat, height: CGFloat) -> CGFloat
+    /// 计算富文本的高度
+    static func attributedTextHeight(text: NSAttributedString, width: CGFloat) -> CGFloat
 }
 
 extension Calculatable {
@@ -94,6 +96,11 @@ extension Calculatable {
     /// 计算文本的宽度
     static func textWidth(text: String, fontSize: CGFloat, height: CGFloat) -> CGFloat {
         return text.boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: height), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size.height
+    }
+    
+    /// 计算富文本的高度
+    static func attributedTextHeight(text: NSAttributedString, width: CGFloat) -> CGFloat {
+        return text.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, context: nil).size.height + 5.0
     }
 }
 

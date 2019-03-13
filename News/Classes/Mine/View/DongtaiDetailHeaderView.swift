@@ -12,6 +12,9 @@ import Kingfisher
 
 class DongtaiDetailHeaderView: UIView, NibLoadable {
     
+    /// 点击了 点赞按钮
+    var didSelectDiggButton: ((_ dongtai: UserDetailDongtai)->())?
+    
     var dongtai = UserDetailDongtai() {
         didSet {
             avatarButton.kf.setImage(with: URL(string: dongtai.user.avatar_url), for: .normal)
@@ -19,8 +22,8 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
             nameLabel.text = dongtai.user.screen_name
             timeLabel.text = "· " + dongtai.createTime
             descriptionLabel.text = dongtai.user.verified_content
-            contentLabel.text = dongtai.content
-            contentLabel.attributedText = EmojiManger().showEmoji(content: dongtai.content, font: contentLabel.font)
+//            contentLabel.text = dongtai.content
+            contentLabel.attributedText = dongtai.attributedContent
             contentLabel.height = Calculate.textHeight(text: dongtai.content, fontSize: 17, width: screenWidth - 30.0)
             readCount.text = dongtai.readCount + " 阅读"
             commentCountLabel.text = dongtai.commentCount + " 评论"
@@ -109,6 +112,11 @@ class DongtaiDetailHeaderView: UIView, NibLoadable {
     /// 覆盖按钮的点击
     @IBAction func coverButtonClicked() {
         
+    }
+    
+    /// 点赞按钮点击
+    @IBAction func diggButtonClicked(_ sender: UIButton) {
+        didSelectDiggButton?(dongtai)
     }
     
     override func layoutSubviews() {

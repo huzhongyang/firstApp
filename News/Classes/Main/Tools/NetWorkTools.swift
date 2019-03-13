@@ -43,6 +43,8 @@ protocol NetWorkToolProtocol {
     static func loadUserDetailNormalDongtaiComments(groupId: Int, offset: Int, count: Int, completionHandler: @escaping (_ comments: [DongtaiComment]) -> ())
     // MARK: - 获取用户详情引用类型的详情的评论数据
     static func loadUserDetailQuoteDongtaiComments(id: Int, offset: Int, completionHandler: @escaping (_ comments: [DongtaiComment]) -> ())
+    // MARK: - 获取动态详情的用户点赞列表数据
+    static func loadDongtaiDetailUserDiggList(id: Int, offset: Int, completionHandler: @escaping (_ comments: [DongtaiUserDigg]) -> ())
 }
 
 extension NetWorkToolProtocol {
@@ -421,6 +423,34 @@ extension NetWorkToolProtocol {
                 if let data = json["data"].dictionary {
                     if let datas = data["data"]!.arrayObject {
                         completionHandler(datas.compactMap({ DongtaiComment.deserialize(from: $0 as? Dictionary) }))
+                    }
+                }
+            }
+        }
+    }
+    
+    /// 获取动态详情的用户点赞列表数据
+    /// - parameter id: id
+    /// - parameter offset: 偏移
+    /// - parameter completionHandler: 返回用户点赞列表数据
+    /// - parameter comments: 用户点赞列表数据
+    static func loadDongtaiDetailUserDiggList(id: Int, offset: Int, completionHandler: @escaping (_ comments: [DongtaiUserDigg]) -> ()) {
+        let url = BASE_URL + "/2/comment/v1/digg_list/?"
+        let params = ["id": id,
+                      "count": 20,
+                      "offset": offset,
+                      "device_id": device_id,
+                      "iid": iid] as [String : Any]
+        
+        Alamofire.request(url, parameters: params).responseJSON { (response) in
+            // 网络错误的提示信息
+            guard response.result.isSuccess else { completionHandler([]); return }
+            if let value = response.result.value {
+                let json = JSON(value)
+                guard json["message"] == "success" else { completionHandler([]); return }
+                if let data = json["data"].dictionary {
+                    if let datas = data["data"]!.arrayObject {
+                        completionHandler(datas.compactMap({ DongtaiUserDigg.deserialize(from: $0 as? Dictionary) }))
                     }
                 }
             }

@@ -111,6 +111,9 @@
                             <state key="normal" title="0">
                                 <color key="titleColor" red="0.27843137254901962" green="0.39215686274509803" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
+                            <connections>
+                                <action selector="diggButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="hjV-SB-0tW"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

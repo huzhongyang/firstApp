@@ -22,7 +22,7 @@ class UserDetailDongtaiCell: UITableViewCell {
             areaLabel.text = dongtai!.position.position + " "
             readCountLabel.text = dongtai!.readCount + "阅读"
             // 对内容作处理，显示 emoji 表情
-            contentLabel.attributedText = EmojiManger().showEmoji(content: dongtai!.content, font: contentLabel.font)
+            contentLabel.attributedText = dongtai!.attributedContent
             contentLabelHeight.constant = dongtai!.contentH
             allContentLabel.isHidden = dongtai!.contentH >= 110.0 ? false : true
             
