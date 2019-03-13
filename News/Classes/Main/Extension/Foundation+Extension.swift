@@ -6,14 +6,14 @@
 //  Copyright © 2019 huzhongyang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-//extension String {
-//    /// 计算文本的高度
-//    func textHeight(fontSize: CGFloat, width: CGFloat) -> CGFloat {
-//        return self.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size.height
-//    }
-//}
+extension String {
+    /// 计算文本的高度
+    func textHeight(fontSize: CGFloat, width: CGFloat) -> CGFloat {
+        return self.boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size.height
+    }
+}
 
 extension TimeInterval {
     // 把秒数转换成时间的字符串

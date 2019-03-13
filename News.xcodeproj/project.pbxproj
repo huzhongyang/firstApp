@@ -107,6 +107,8 @@
 		44DB4C8B2238BDB000977F2A /* SVProgressHUD+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DB4C8A2238BDB000977F2A /* SVProgressHUD+Extension.swift */; };
 		44DB4C8D2238F78300977F2A /* PostCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DB4C8C2238F78300977F2A /* PostCommentView.swift */; };
 		44DB4C8F2238F78B00977F2A /* PostCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44DB4C8E2238F78B00977F2A /* PostCommentView.xib */; };
+		44DB4C9122392DB300977F2A /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DB4C9022392DB300977F2A /* NewsModel.swift */; };
+		44DB4C9322392E8B00977F2A /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DB4C9222392E8B00977F2A /* Video.swift */; };
 		44ECD8CB2236BB9600C2735D /* DongtaiCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD8C92236BB9600C2735D /* DongtaiCommentCell.swift */; };
 		44ECD8CC2236BB9600C2735D /* DongtaiCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44ECD8CA2236BB9600C2735D /* DongtaiCommentCell.xib */; };
 		44ECD8CF2237CEF600C2735D /* UserDetailViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD8CD2237CEF600C2735D /* UserDetailViewController2.swift */; };
@@ -244,6 +246,8 @@
 		44DB4C8A2238BDB000977F2A /* SVProgressHUD+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SVProgressHUD+Extension.swift"; sourceTree = "<group>"; };
 		44DB4C8C2238F78300977F2A /* PostCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCommentView.swift; sourceTree = "<group>"; };
 		44DB4C8E2238F78B00977F2A /* PostCommentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCommentView.xib; sourceTree = "<group>"; };
+		44DB4C9022392DB300977F2A /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		44DB4C9222392E8B00977F2A /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		44ECD8C92236BB9600C2735D /* DongtaiCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DongtaiCommentCell.swift; sourceTree = "<group>"; };
 		44ECD8CA2236BB9600C2735D /* DongtaiCommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DongtaiCommentCell.xib; sourceTree = "<group>"; };
 		44ECD8CD2237CEF600C2735D /* UserDetailViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController2.swift; sourceTree = "<group>"; };
@@ -413,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				44C2EF0D21E87A1B004C3659 /* HomeNewsTitle.swift */,
+				44DB4C9022392DB300977F2A /* NewsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -447,6 +452,7 @@
 		44B47D4A21A300AF0026E2F0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				44DB4C9222392E8B00977F2A /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -925,8 +931,10 @@
 				44DB4C8D2238F78300977F2A /* PostCommentView.swift in Sources */,
 				4400914B21A52B0F008B862C /* MyTheme.swift in Sources */,
 				44B47D5B21A300AF0026E2F0 /* VideoViewController.swift in Sources */,
+				44DB4C9322392E8B00977F2A /* Video.swift in Sources */,
 				44DB4C802238A41D00977F2A /* WendaViewController.swift in Sources */,
 				44DB4C842238BA7900977F2A /* UserDiggViewController.swift in Sources */,
+				44DB4C9122392DB300977F2A /* NewsModel.swift in Sources */,
 				44C2EF5621E8CF9C004C3659 /* SQLiteManager.swift in Sources */,
 				4404FDCA222B933B0057ABA8 /* RefreshView.swift in Sources */,
 				4404FDCD222FBD2F0057ABA8 /* UserDetailWendaCell.swift in Sources */,

@@ -51,3 +51,13 @@ let UserDetailHeaderViewButtonClicked = "UserDetailHeaderViewButtonClicked"
 let image1Width: CGFloat = screenWidth * 0.5
 let image2Width: CGFloat = (screenWidth - 35) * 0.5
 let image3Width: CGFloat = (screenWidth - 40) / 3
+
+
+/// 从哪里进入头条
+enum TTFrom: String {
+    case pull = "pull"
+    case loadMore = "load_more"
+    case auto = "auto"
+    case enterAuto = "enter_auto"
+    case preLoadMoreDraw = "pre_load_more_draw"
+}
