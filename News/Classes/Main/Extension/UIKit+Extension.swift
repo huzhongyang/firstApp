@@ -17,6 +17,65 @@ extension NibLoadable {
     }
 }
 
+protocol StoryboardLoadable {}
+
+extension StoryboardLoadable where Self: UIViewController {
+    /// 提供 加载方法
+    static func loadStoryboard() -> Self {
+        return UIStoryboard(name: "\(self)", bundle: nil).instantiateViewController(withIdentifier: "\(self)") as! Self
+    }
+}
+
+protocol RegisterCellFromNib {}
+
+extension RegisterCellFromNib {
+    
+    static var identifier: String { return "\(self)" }
+    
+    static var nib: UINib? { return UINib(nibName: "\(self)", bundle: nil) }
+}
+
+extension UITableView {
+    /// 注册 cell 的方法
+    func zy_registerCell<T: UITableViewCell>(cell: T.Type) where T: RegisterCellFromNib {
+        if let nib = T.nib { register(nib, forCellReuseIdentifier: T.identifier) }
+        else { register(cell, forCellReuseIdentifier: T.identifier) }
+    }
+    
+    /// 从缓存池池出队已经存在的 cell
+    func zy_dequeueReusableCell<T: UITableViewCell>(indexPath: IndexPath) -> T where T: RegisterCellFromNib {
+        return dequeueReusableCell(withIdentifier: T.identifier, for: indexPath) as! T
+    }
+}
+
+extension UICollectionView {
+    /// 注册 cell 的方法
+    func zy_registerCell<T: UICollectionViewCell>(cell: T.Type) where T: RegisterCellFromNib {
+        if let nib = T.nib { register(nib, forCellWithReuseIdentifier: T.identifier) }
+        else { register(cell, forCellWithReuseIdentifier: T.identifier) }
+    }
+    
+    /// 从缓存池池出队已经存在的 cell
+    func zy_dequeueReusableCell<T: UICollectionViewCell>(indexPath: IndexPath) -> T where T: RegisterCellFromNib {
+        return dequeueReusableCell(withReuseIdentifier: T.identifier, for: indexPath) as! T
+    }
+    
+    /// 注册头部
+    func zy_registerSupplementaryHeaderView<T: UICollectionReusableView>(reusableView: T.Type) where T: RegisterCellFromNib {
+        // T 遵守了 RegisterCellOrNib 协议，所以通过 T 就能取出 identifier 这个属性
+        if let nib = T.nib {
+            register(nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.identifier)
+        } else {
+            register(reusableView, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.identifier)
+        }
+    }
+    
+    /// 获取可重用的头部
+    func zy_dequeueReusableSupplementaryHeaderView<T: UICollectionReusableView>(indexPath: IndexPath) -> T where T: RegisterCellFromNib {
+        return dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: T.identifier, for: indexPath) as! T
+    }
+}
+
 // MARK: - UIView 扩展
 extension UIView {
     /// x
@@ -123,5 +182,15 @@ extension UIColor {
     /// 富文本字体 蓝色
     class func textBlue() -> UIColor {
         return UIColor(r: 51, g: 153, b: 255)
+    }
+    
+    /// 背景灰色 232
+    class func grayColor232() -> UIColor {
+        return UIColor(r: 232, g: 232, b: 232)
+    }
+    
+    /// 背景红色
+    class func globalRedColor() -> UIColor {
+        return UIColor(r: 196, g: 73, b: 67)
     }
 }

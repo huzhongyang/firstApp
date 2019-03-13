@@ -39,6 +39,10 @@ let topTabButtonWidth: CGFloat = screenWidth * 0.2
 let topTabindicatorWidth: CGFloat = 40
 let topTabindicatorHeight: CGFloat = 2
 
+let MyPresentationControllerDismiss = "MyPresentationControllerDismiss"
+let NavigationBarConcernButtonClicked = "NavigationBarConcernButtonClicked"
+let UserDetailHeaderViewButtonClicked = "UserDetailHeaderViewButtonClicked"
+
 /// 动态图片的宽高
 // 图片的宽高
 // 1          screenWidth * 0.5

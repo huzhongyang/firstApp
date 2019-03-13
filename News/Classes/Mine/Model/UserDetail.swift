@@ -31,7 +31,11 @@ struct UserDetail: HandyJSON {
     var user_id: Int = 0
     var creator_id: Int = 0
     
-    var description: NSString = ""
+    var description: String = ""
+    var attributedDescription: NSAttributedString {
+        let emojimanager = EmojiManger()
+        return emojimanager.showEmoji(content: description, font: UIFont.systemFont(ofSize: 13))
+    }
     var descriptionHeight: CGFloat {
         return description.boundingRect(with: CGSize(width: screenWidth - 30.0, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 13)], context: nil).size.height + 5.0
     }

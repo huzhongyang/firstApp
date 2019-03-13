@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class DongtaiDetailViewController: UITableViewController {
     
@@ -68,6 +69,19 @@ extension DongtaiDetailViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return comments.count
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let comment = comments[indexPath.row]
+//        let postCommentView = PostCommentView.loadViewFromNib()
+        if comment.screen_name != "" {
+//            postCommentView.placeholderLabel.text = "回复 \(comment.screen_name):"
+        } else if comment.user.user_id != 0 {
+            if comment.user.screen_name != "" {
+//                postCommentView.placeholderLabel.text = "回复 \(comment.user.screen_name):"
+            }
+        }
+//        view.addSubview(postCommentView)
+    }
 }
 
 extension DongtaiDetailViewController {
@@ -88,23 +102,38 @@ extension DongtaiDetailViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(receiveDayOrNightButtonClicked), name: Notification.Name(rawValue: "dayOrNightButtonClicked"), object: nil)
         
         tableView.register(UINib(nibName: String(describing: DongtaiCommentCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DongtaiCommentCell.self))
-        
+//        SVProgressHUD.configuration()
         switch dongtai.item_type {
         case .commentOrQuoteOthers, .commentOrQuoteContent, .forwardArticle:
-            // 获取用户详情引用类型的详情的评论数据 item_type: 109,212,110
-            NetWorkTool.loadUserDetailQuoteDongtaiComments(id: dongtai.id, offset: 0) { (comments) in
-                self.comments = comments
-                self.tableView.reloadData()
-            }
+            tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
+                // 获取用户详情其他类型的详情的评论数据
+                NetWorkTool.loadUserDetailQuoteDongtaiComments(id: self!.dongtai.id, offset: self!.comments.count, completionHandler: {
+                    self!.reloadData($0)
+                })
+            })
         case .postContent:
-            // 获取用户详情一般的详情的评论数据
-            NetWorkTool.loadUserDetailNormalDongtaiComments(groupId: Int(self.dongtai.id_str)!, offset: self.comments.count, count: 20, completionHandler: { (comments) in
-                self.comments = comments
-                self.tableView.reloadData()
+            tableView.mj_footer = RefreshAutoGifFooter(refreshingBlock: { [weak self] in
+                // 获取用户详情一般的详情的评论数据
+                NetWorkTool.loadUserDetailNormalDongtaiComments(groupId: Int(self!.dongtai.id_str)!, offset: self!.comments.count, count: 20, completionHandler: {
+                    self!.reloadData($0)
+                })
             })
         default:
             break
         }
+    }
+    
+    /// 刷新数据
+    func reloadData(_ comments: [DongtaiComment]) {
+        if tableView.mj_footer.isRefreshing { tableView.mj_footer.endRefreshing() }
+        tableView.mj_footer.pullingPercent = 0.0
+        if comments.count == 0 {
+            tableView.mj_footer.endRefreshingWithNoMoreData()
+            SVProgressHUD.showInfo(withStatus: "没有更多数据啦!")
+            return
+        }
+        self.comments += comments
+        tableView.reloadData()
     }
     
     /// 导航栏右上角按钮点击
